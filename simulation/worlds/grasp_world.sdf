@@ -1,0 +1,419 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="grasp_world">
+
+    <!-- 物理 -->
+    <gravity>0 0 -9.8</gravity>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- 光照 -->
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.3 0.1 -1</direction>
+    </light>
+
+    <!-- 地面 -->
+    <model name="ground">
+      <static>true</static>
+      <link name="link">
+        <collision name="col">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.85 0.85 0.85 1</ambient>
+            <diffuse>0.85 0.85 0.85 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 桌子：measured lab table + fixed black goal-region plate -->
+    <model name="table">
+      <static>true</static>
+      <pose>0.500 0.050 0 0 0 1.5708</pose>
+
+      <link name="table_link">
+
+        <!-- White tabletop: 1.200 x 0.600 x 0.034 m, top at z=0.750 m. -->
+        <collision name="tabletop_col">
+          <pose>0 0 0.733 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.200 0.600 0.034</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <sensor name="table_contact_sensor" type="contact">
+          <topic>/so101/table_contacts</topic>
+          <always_on>true</always_on>
+          <update_rate>50</update_rate>
+          <contact>
+            <collision>tabletop_col</collision>
+            <collision>leg1_col</collision>
+            <collision>leg2_col</collision>
+            <collision>leg3_col</collision>
+            <collision>leg4_col</collision>
+            <collision>goal_region_plate_col</collision>
+          </contact>
+        </sensor>
+        <visual name="tabletop_vis">
+          <pose>0 0 0.733 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.200 0.600 0.034</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.72 0.72 0.70 1</ambient>
+            <diffuse>0.92 0.92 0.90 1</diffuse>
+            <specular>0.03 0.03 0.03 1</specular>
+          </material>
+        </visual>
+
+        <!-- Table legs: 0.050 x 0.050 x 0.716 m, inset 40 mm from edges. -->
+        <collision name="leg1_col">
+          <pose>0.535 0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="leg1_vis">
+          <pose>0.535 0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.12 1</ambient>
+            <diffuse>0.18 0.18 0.18 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="leg2_col">
+          <pose>0.535 -0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="leg2_vis">
+          <pose>0.535 -0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.12 1</ambient>
+            <diffuse>0.18 0.18 0.18 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="leg3_col">
+          <pose>-0.535 0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="leg3_vis">
+          <pose>-0.535 0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.12 1</ambient>
+            <diffuse>0.18 0.18 0.18 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="leg4_col">
+          <pose>-0.535 -0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="leg4_vis">
+          <pose>-0.535 -0.235 0.358 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.050 0.050 0.716</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.12 1</ambient>
+            <diffuse>0.18 0.18 0.18 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <!-- Fixed black goal-region plate on top of the table. -->
+        <collision name="goal_region_plate_col">
+          <pose>-0.500 0.205 0.7515 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.100 0.100 0.003</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="goal_region_plate_vis">
+          <pose>-0.500 0.205 0.7515 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.100 0.100 0.003</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0 0 0 1</specular>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <!-- Cardstock on the tabletop: 0.634 x 0.507 m.
+         Its edge is 0.062 m from the robot-side long edge and
+         0.076 m from the place-side short edge. -->
+    <model name="table_cardstock">
+      <static>true</static>
+      <pose>0.5155 -0.1570 0.7502 0 0 0</pose>
+      <link name="cardstock_link">
+        <visual name="cardstock_visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.507 0.634</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.005 0.005 0.005 1</ambient>
+            <diffuse>0.008 0.008 0.008 1</diffuse>
+            <specular>0.002 0.002 0.002 1</specular>
+            <pbr>
+              <metal>
+                <metalness>0.0</metalness>
+                <roughness>0.95</roughness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 红色 PLA 方块 -->
+    <model name="cube">
+      <pose>0.512 -0.154 0.7655 0 0 0</pose>
+      <link name="link">
+
+        <inertial>
+          <mass>0.033</mass>
+          <inertia>
+            <ixx>5e-6</ixx>
+            <iyy>5e-6</iyy>
+            <izz>5e-6</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>0.03 0.03 0.03</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.1</mu>
+                <mu2>1.1</mu2>
+              </ode>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0.0</restitution_coefficient>
+            </bounce>
+            <contact>
+              <ode>
+                <kp>1400</kp>
+                <kd>45</kd>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+        <sensor name="cube_contact_sensor" type="contact">
+          <topic>/so101/cube_contacts</topic>
+          <always_on>true</always_on>
+          <update_rate>50</update_rate>
+          <contact>
+            <collision>col</collision>
+          </contact>
+        </sensor>
+
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>0.03 0.03 0.03</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.95 0.02 0.01 1</ambient>
+            <diffuse>0.95 0.02 0.01 1</diffuse>
+            <specular>0.08 0.08 0.08 1</specular>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <!-- World-fixed top camera. This is intentionally outside the SO101 model. -->
+    <model name="top_camera">
+      <static>true</static>
+      <!-- Fit from all 15 real training-grid pixel locations. -->
+      <pose>0.571752 -0.159511 0.955856 3.246893 1.321739 3.253596</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.03 0.03 0.03 1</ambient>
+            <diffuse>0.03 0.03 0.03 1</diffuse>
+          </material>
+        </visual>
+        <sensor name="top_camera_sensor" type="camera">
+          <always_on>true</always_on>
+          <update_rate>30</update_rate>
+          <topic>/top_camera/image_raw</topic>
+          <camera>
+            <camera_info_topic>/top_camera/camera_info</camera_info_topic>
+            <horizontal_fov>1.745329</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.01</near>
+              <far>10.0</far>
+            </clip>
+            <distortion>
+              <k1>0.123306</k1>
+              <k2>-0.283015</k2>
+              <k3>0.0</k3>
+              <p1>0.0</p1>
+              <p2>0.0</p2>
+              <center>0.5 0.5</center>
+            </distortion>
+          </camera>
+        </sensor>
+        <sensor name="top_camera_segmentation_sensor" type="segmentation">
+          <always_on>false</always_on>
+          <update_rate>60</update_rate>
+          <topic>/top_camera/segmentation</topic>
+          <camera>
+            <segmentation_type>semantic</segmentation_type>
+            <camera_info_topic>/top_camera/segmentation/camera_info</camera_info_topic>
+            <horizontal_fov>1.745329</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>960</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.01</near>
+              <far>10.0</far>
+            </clip>
+            <distortion>
+              <k1>0.123306</k1>
+              <k2>-0.283015</k2>
+              <k3>0.0</k3>
+              <p1>0.0</p1>
+              <p2>0.0</p2>
+              <center>0.5 0.5</center>
+            </distortion>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+    <!-- SO101 robot
+         Important:
+         ROS2 control is configured inside worlds/so101.sdf.
+         This world only loads the robot model and fixes its base to the world.
+    -->
+    <include>
+      <name>so101</name>
+      <uri>so101.sdf</uri>
+      <pose>0.2 -0.15 0.75 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>

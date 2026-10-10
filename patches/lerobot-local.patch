@@ -1,0 +1,291 @@
+diff --git a/src/lerobot/cameras/opencv/camera_opencv.py b/src/lerobot/cameras/opencv/camera_opencv.py
+index 3665a909..24b16ad4 100644
+--- a/src/lerobot/cameras/opencv/camera_opencv.py
++++ b/src/lerobot/cameras/opencv/camera_opencv.py
+@@ -222,7 +222,7 @@ class OpenCVCamera(Camera):
+         success = self.videocapture.set(cv2.CAP_PROP_FPS, float(self.fps))
+         actual_fps = self.videocapture.get(cv2.CAP_PROP_FPS)
+         # Use math.isclose for robust float comparison
+-        if not success or not math.isclose(self.fps, actual_fps, rel_tol=1e-3):
++        if not math.isclose(self.fps, actual_fps, rel_tol=1e-3):
+             raise RuntimeError(f"{self} failed to set fps={self.fps} ({actual_fps=}).")
+ 
+     def _validate_width_and_height(self) -> None:
+@@ -232,13 +232,13 @@ class OpenCVCamera(Camera):
+         height_success = self.videocapture.set(cv2.CAP_PROP_FRAME_HEIGHT, float(self.capture_height))
+ 
+         actual_width = int(round(self.videocapture.get(cv2.CAP_PROP_FRAME_WIDTH)))
+-        if not width_success or self.capture_width != actual_width:
++        if self.capture_width != actual_width:
+             raise RuntimeError(
+                 f"{self} failed to set capture_width={self.capture_width} ({actual_width=}, {width_success=})."
+             )
+ 
+         actual_height = int(round(self.videocapture.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+-        if not height_success or self.capture_height != actual_height:
++        if self.capture_height != actual_height:
+             raise RuntimeError(
+                 f"{self} failed to set capture_height={self.capture_height} ({actual_height=}, {height_success=})."
+             )
+diff --git a/src/lerobot/cameras/utils.py b/src/lerobot/cameras/utils.py
+index 1eb69840..145e40b2 100644
+--- a/src/lerobot/cameras/utils.py
++++ b/src/lerobot/cameras/utils.py
+@@ -60,6 +60,7 @@ def get_cv2_backend() -> int:
+     import cv2
+ 
+     if platform.system() == "Windows":
++        return cv2.CAP_DSHOW
+         return cv2.CAP_MSMF  # Use MSMF for Windows instead of AVFOUNDATION
+     # elif platform.system() == "Darwin":  # macOS
+     #     return cv2.CAP_AVFOUNDATION
+diff --git a/src/lerobot/configs/policies.py b/src/lerobot/configs/policies.py
+index f5fa727c..542bac35 100644
+--- a/src/lerobot/configs/policies.py
++++ b/src/lerobot/configs/policies.py
+@@ -12,14 +12,13 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ import abc
+-import builtins
+ import json
+ import logging
+ import os
+ import tempfile
+ from dataclasses import dataclass, field
+ from pathlib import Path
+-from typing import TypeVar
++from typing import Type, TypeVar
+ 
+ import draccus
+ from huggingface_hub import hf_hub_download
+@@ -27,12 +26,12 @@ from huggingface_hub.constants import CONFIG_NAME
+ from huggingface_hub.errors import HfHubHTTPError
+ 
+ from lerobot.configs.types import FeatureType, NormalizationMode, PolicyFeature
+-from lerobot.constants import ACTION, OBS_STATE
+ from lerobot.optim.optimizers import OptimizerConfig
+ from lerobot.optim.schedulers import LRSchedulerConfig
+ from lerobot.utils.hub import HubMixin
+ from lerobot.utils.utils import auto_select_torch_device, is_amp_available, is_torch_device_available
+ 
++# Generic variable that is either PreTrainedConfig or a subclass thereof
+ T = TypeVar("T", bound="PreTrainedConfig")
+ 
+ 
+@@ -63,6 +62,9 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+     # automatic gradient scaling is used.
+     use_amp: bool = False
+ 
++    # added by Sachin-2007
++    gradient_accumulation_steps: int = 1
++
+     push_to_hub: bool = True
+     repo_id: str | None = None
+ 
+@@ -120,8 +122,8 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @property
+     def robot_state_feature(self) -> PolicyFeature | None:
+-        for ft_name, ft in self.input_features.items():
+-            if ft.type is FeatureType.STATE and ft_name == OBS_STATE:
++        for _, ft in self.input_features.items():
++            if ft.type is FeatureType.STATE:
+                 return ft
+         return None
+ 
+@@ -138,8 +140,8 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @property
+     def action_feature(self) -> PolicyFeature | None:
+-        for ft_name, ft in self.output_features.items():
+-            if ft.type is FeatureType.ACTION and ft_name == ACTION:
++        for _, ft in self.output_features.items():
++            if ft.type is FeatureType.ACTION:
+                 return ft
+         return None
+ 
+@@ -149,17 +151,17 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @classmethod
+     def from_pretrained(
+-        cls: builtins.type[T],
+-        pretrained_name_or_path: str | Path,
+-        *,
+-        force_download: bool = False,
+-        resume_download: bool = None,
+-        proxies: dict | None = None,
+-        token: str | bool | None = None,
+-        cache_dir: str | Path | None = None,
+-        local_files_only: bool = False,
+-        revision: str | None = None,
+-        **policy_kwargs,
++            cls: Type[T],
++            pretrained_name_or_path: str | Path,
++            *,
++            force_download: bool = False,
++            resume_download: bool = None,
++            proxies: dict | None = None,
++            token: str | bool | None = None,
++            cache_dir: str | Path | None = None,
++            local_files_only: bool = False,
++            revision: str | None = None,
++            **policy_kwargs,
+     ) -> T:
+         model_id = str(pretrained_name_or_path)
+         config_file: str | None = None
+@@ -197,11 +199,16 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+             config = json.load(f)
+ 
+         config.pop("type")
+-        with tempfile.NamedTemporaryFile("w+") as f:
++
++        # Create temporary file and ensure it's closed before draccus reads it (Windows fix)
++        with tempfile.NamedTemporaryFile("w+", delete=False) as f:
+             json.dump(config, f)
+-            config_file = f.name
+-            f.flush()
++            temp_config_file = f.name
+ 
++        try:
+             cli_overrides = policy_kwargs.pop("cli_overrides", [])
+             with draccus.config_type("json"):
+-                return draccus.parse(orig_config.__class__, config_file, args=cli_overrides)
++                return draccus.parse(orig_config.__class__, temp_config_file, args=cli_overrides)
++        finally:
++            # Clean up the temporary file
++            os.unlink(temp_config_file)
+\ No newline at end of file
+diff --git a/src/lerobot/motors/motors_bus.py b/src/lerobot/motors/motors_bus.py
+index 97830fc3..bc28b53f 100644
+--- a/src/lerobot/motors/motors_bus.py
++++ b/src/lerobot/motors/motors_bus.py
+@@ -1056,7 +1056,7 @@ class MotorsBus(abc.ABC):
+         motors: str | list[str] | None = None,
+         *,
+         normalize: bool = True,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+     ) -> dict[str, Value]:
+         """Read the same register from several motors at once.
+ 
+@@ -1104,7 +1104,7 @@ class MotorsBus(abc.ABC):
+         length: int,
+         motor_ids: list[int],
+         *,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+         raise_on_error: bool = True,
+         err_msg: str = "",
+     ) -> tuple[dict[int, int], int]:
+@@ -1113,7 +1113,7 @@ class MotorsBus(abc.ABC):
+             comm = self.sync_reader.txRxPacket()
+             if self._is_comm_success(comm):
+                 break
+-            logger.debug(
++            logger.info(
+                 f"Failed to sync read @{addr=} ({length=}) on {motor_ids=} ({n_try=}): "
+                 + self.packet_handler.getTxRxResult(comm)
+             )
+@@ -1151,7 +1151,7 @@ class MotorsBus(abc.ABC):
+         values: Value | dict[str, Value],
+         *,
+         normalize: bool = True,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+     ) -> None:
+         """Write the same register on multiple motors.
+ 
+@@ -1192,7 +1192,7 @@ class MotorsBus(abc.ABC):
+         addr: int,
+         length: int,
+         ids_values: dict[int, int],
+-        num_retry: int = 0,
++        num_retry: int = 1,
+         raise_on_error: bool = True,
+         err_msg: str = "",
+     ) -> int:
+@@ -1201,7 +1201,7 @@ class MotorsBus(abc.ABC):
+             comm = self.sync_writer.txPacket()
+             if self._is_comm_success(comm):
+                 break
+-            logger.debug(
++            logger.info(
+                 f"Failed to sync write @{addr=} ({length=}) with {ids_values=} ({n_try=}): "
+                 + self.packet_handler.getTxRxResult(comm)
+             )
+diff --git a/src/lerobot/scripts/train.py b/src/lerobot/scripts/train.py
+index 235352cd..4a7e8887 100644
+--- a/src/lerobot/scripts/train.py
++++ b/src/lerobot/scripts/train.py
+@@ -14,6 +14,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ import logging
++import os
+ import time
+ from contextlib import nullcontext
+ from pprint import pformat
+@@ -23,6 +24,7 @@ import torch
+ from termcolor import colored
+ from torch.amp import GradScaler
+ from torch.optim import Optimizer
++from torch.utils.tensorboard import SummaryWriter
+ 
+ from lerobot.configs import parser
+ from lerobot.configs.train import TrainPipelineConfig
+@@ -105,6 +107,24 @@ def update_policy(
+     return train_metrics, output_dict
+ 
+ 
++def log_tensorboard_scalars(
++    writer: SummaryWriter,
++    step: int,
++    train_tracker: MetricsTracker,
++    output_dict: dict | None,
++) -> None:
++    for key, value in train_tracker.to_dict().items():
++        if isinstance(value, int | float):
++            writer.add_scalar(f"train/{key}", value, step)
++
++    if output_dict:
++        for key, value in output_dict.items():
++            if isinstance(value, int | float):
++                writer.add_scalar(f"train/{key}", value, step)
++
++    writer.flush()
++
++
+ @parser.wrap()
+ def train(cfg: TrainPipelineConfig):
+     cfg.validate()
+@@ -116,6 +136,11 @@ def train(cfg: TrainPipelineConfig):
+         wandb_logger = None
+         logging.info(colored("Logs will be saved locally.", "yellow", attrs=["bold"]))
+ 
++    tensorboard_dir = os.environ.get("LEROBOT_TENSORBOARD_DIR")
++    tensorboard_writer = SummaryWriter(tensorboard_dir) if tensorboard_dir else None
++    if tensorboard_writer:
++        logging.info(f"TensorBoard logs will be saved to {tensorboard_dir}")
++
+     if cfg.seed is not None:
+         set_seed(cfg.seed)
+ 
+@@ -230,6 +255,8 @@ def train(cfg: TrainPipelineConfig):
+ 
+         if is_log_step:
+             logging.info(train_tracker)
++            if tensorboard_writer:
++                log_tensorboard_scalars(tensorboard_writer, step, train_tracker, output_dict)
+             if wandb_logger:
+                 wandb_log_dict = train_tracker.to_dict()
+                 if output_dict:
+@@ -281,6 +308,8 @@ def train(cfg: TrainPipelineConfig):
+     if eval_env:
+         eval_env.close()
+     logging.info("End of training")
++    if tensorboard_writer:
++        tensorboard_writer.close()
+ 
+     if cfg.policy.push_to_hub:
+         policy.push_model_to_hub(cfg)

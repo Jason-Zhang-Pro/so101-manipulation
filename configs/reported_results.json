@@ -1,0 +1,21 @@
+{
+  "source": "Team project log, slides through Week 10; user-supplied PDF reviewed 2026-10-10",
+  "task_metric": "grasp_success",
+  "seen": {"successes": 128, "trials": 150, "positions": 15},
+  "unseen": {"rate": 0.25, "trials": null},
+  "lighting": [
+    {"condition": "Afternoon", "successes": 23, "trials": 30},
+    {"condition": "Bright noon", "successes": 17, "trials": 30},
+    {"condition": "Dim evening", "successes": 8, "trials": 30}
+  ],
+  "simulation": {
+    "scope": "Four-world free-run, no ACT inference or PPO updates",
+    "headless_rtf": {"original": 0.696, "optimized": 0.977},
+    "gui_rtf": {"original": 0.614, "optimized": 0.971},
+    "headless_cpu_reduction_percent": 32,
+    "headless_pss_reduction_percent": 18,
+    "optimized_headless_sampling_passed": 12,
+    "optimized_headless_sampling_trials": 12,
+    "implementation_included": false
+  }
+}

@@ -1,0 +1,751 @@
+<sdf version="1.9">
+  <model name="so101_new_calib">
+    <joint name="gripper_camera_mount_joint" type="fixed">
+      <pose relative_to="gripper_link">0.019923 0.025276 -0.028066 1.570803 -0.000003 -3.092911</pose>
+      <parent>gripper_link</parent>
+      <child>gripper_camera_mount_link</child>
+    </joint>
+    <link name="gripper_camera_mount_link">
+      <pose relative_to="gripper_camera_mount_joint">0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>assets/gripper_camera_mount.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>assets/gripper_camera_mount.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.88 0.88 0.85 1</ambient>
+          <diffuse>0.88 0.88 0.85 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name="gripper_frame_joint" type="fixed">
+      <pose relative_to="gripper_link">-0.0079 -0.000218 -0.098127 3.14159 0.000003 3.14159</pose>
+      <parent>gripper_link</parent>
+      <child>gripper_frame_link</child>
+    </joint>
+    <link name="gripper_frame_link">
+      <pose relative_to="gripper_frame_joint">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1e-9</mass>
+        <inertia>
+          <ixx>0</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0</iyy>
+          <iyz>0</iyz>
+          <izz>0</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name="gripper_camera_joint" type="fixed">
+      <pose relative_to="gripper_link">0.000025 0.074066 0.006733 -2.704083 -0.000008 -3.092907</pose>
+      <parent>gripper_link</parent>
+      <child>gripper_camera_link</child>
+    </joint>
+    <link name="gripper_camera_link">
+      <pose relative_to="gripper_camera_joint">0 0 0 0 0 0</pose>
+      <collision name="camera_body_collision">
+        <pose>0 0 -0.001 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.024 0.024 0.002</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name="camera_lens_collision">
+        <pose>0 0 0.014 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.008</radius>
+            <length>0.028</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="camera_body_visual">
+        <pose>0 0 -0.001 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.024 0.024 0.002</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.03 0.03 0.03 1</ambient>
+          <diffuse>0.03 0.03 0.03 1</diffuse>
+        </material>
+      </visual>
+      <visual name="camera_lens_visual">
+        <pose>0 0 0.014 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.008</radius>
+            <length>0.028</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.01 0.01 0.01 1</ambient>
+          <diffuse>0.01 0.01 0.01 1</diffuse>
+        </material>
+      </visual>
+      <sensor name="gripper_camera_sensor" type="camera">
+        <pose>0.007 -0.0015 0.0001 0 -1.570796 -1.570796</pose>
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <topic>/gripper_camera/image_raw</topic>
+        <camera>
+          <camera_info_topic>/gripper_camera/camera_info</camera_info_topic>
+          <horizontal_fov>0.872665</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.01</near>
+            <far>10.0</far>
+          </clip>
+        </camera>
+      </sensor>
+      <sensor name="gripper_camera_segmentation_sensor" type="segmentation">
+        <pose>0.007 -0.0015 0.0001 0 -1.570796 -1.570796</pose>
+        <always_on>false</always_on>
+        <update_rate>30</update_rate>
+        <topic>/gripper_camera/segmentation</topic>
+        <camera>
+          <segmentation_type>semantic</segmentation_type>
+          <camera_info_topic>/gripper_camera/segmentation/camera_info</camera_info_topic>
+          <horizontal_fov>0.872665</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.01</near>
+            <far>10.0</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+    <joint name="world_to_base" type="fixed">
+      <pose relative_to="__model__">0 0 0 0 0 0</pose>
+      <parent>world</parent>
+      <child>base_link</child>
+    </joint>
+    <link name="base_link">
+      <pose relative_to="world_to_base">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.0137179 -5.19711e-05 0.0334843 0 0 0</pose>
+        <mass>0.14699999999999999</mass>
+        <inertia>
+          <ixx>0.00011468600000000001</ixx>
+          <ixy>-4.5978699999999999e-07</ixy>
+          <ixz>4.9715099999999996e-06</ixz>
+          <iyy>0.000136117</iyy>
+          <iyz>9.7527499999999998e-08</iyz>
+          <izz>0.000130364</izz>
+        </inertia>
+      </inertial>
+      <collision name="base_link_collision">
+        <pose>-0.00636471 -9.94414e-05 -0.0024 1.5708 -1.77635683940025e-15 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/base_motor_holder_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="base_link_collision_1">
+        <pose>-0.00636471 -8.97657e-09 -0.0024 1.5708 0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/base_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="base_link_collision_2">
+        <pose>0.0263353 -8.97657e-09 0.0437 -8.21148e-16 7.845130000000001e-18 1.249e-15</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="base_link_collision_3">
+        <pose>-0.0309827 -0.000199441 0.0474 1.5708 -1.360023205165817e-14 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/waveshare_mounting_plate_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="base_link_visual">
+        <pose>-0.00636471 -9.94414e-05 -0.0024 1.5708 -1.77635683940025e-15 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/base_motor_holder_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name="base_link_visual_1">
+        <pose>-0.00636471 -8.97657e-09 -0.0024 1.5708 0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/base_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name="base_link_visual_2">
+        <pose>0.0263353 -8.97657e-09 0.0437 -8.21148e-16 7.845130000000001e-18 1.249e-15</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+      <visual name="base_link_visual_3">
+        <pose>-0.0309827 -0.000199441 0.0474 1.5708 -1.360023205165817e-14 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/waveshare_mounting_plate_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="shoulder_pan" type="revolute">
+      <pose relative_to="base_link">0.0388353 -8.97657e-09 0.0624 3.14159 4.182529999990079e-17 -3.14159</pose>
+      <parent>base_link</parent>
+      <child>shoulder_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.9198599999999999</lower>
+          <upper>1.9198599999999999</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="shoulder_link">
+      <pose relative_to="shoulder_pan">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.0307604 -1.66727e-05 -0.0252713 0 0 0</pose>
+        <mass>0.100006</mass>
+        <inertia>
+          <ixx>8.3758999999999995e-05</ixx>
+          <ixy>7.5552500000000001e-08</ixy>
+          <ixz>-1.1634200000000001e-06</ixz>
+          <iyy>8.1040300000000004e-05</iyy>
+          <iyz>1.5466300000000001e-07</iyz>
+          <izz>2.39783e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name="shoulder_link_collision">
+        <pose>-0.0303992 0.000422241 -0.0417 0 1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="shoulder_link_collision_1">
+        <pose>-0.0675992 -0.000177759 0.0158499 0 -1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/motor_holder_so101_base_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="shoulder_link_collision_2">
+        <pose>0.0122008 2.22413e-05 0.0464 -1.5708 2.352210000000001e-33 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/rotation_pitch_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="shoulder_link_visual">
+        <pose>-0.0303992 0.000422241 -0.0417 0 1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+      <visual name="shoulder_link_visual_1">
+        <pose>-0.0675992 -0.000177759 0.0158499 0 -1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/motor_holder_so101_base_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name="shoulder_link_visual_2">
+        <pose>0.0122008 2.22413e-05 0.0464 -1.5708 2.352210000000001e-33 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/rotation_pitch_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="shoulder_lift" type="revolute">
+      <pose relative_to="shoulder_link">-0.0303992 -0.0182778 -0.0542 1.570792653576406 -1.570792653605768 3.141592653589793</pose>
+      <parent>shoulder_link</parent>
+      <child>upper_arm_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.74533</lower>
+          <upper>1.74533</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="upper_arm_link">
+      <pose relative_to="shoulder_lift">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.0898471 -0.008382239999999999 0.0184089 0 0 0</pose>
+        <mass>0.10299999999999999</mass>
+        <inertia>
+          <ixx>4.0800200000000003e-05</ixx>
+          <ixy>-1.9781900000000001e-05</ixy>
+          <ixz>-4.0301599999999997e-08</ixz>
+          <iyy>0.00014731799999999999</iyy>
+          <iyz>8.9732600000000005e-09</iyz>
+          <izz>0.00014248700000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name="upper_arm_link_collision">
+        <pose>-0.11257 -0.0155 0.0187 -3.14159 -5.273559366969494e-16 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="upper_arm_link_collision_1">
+        <pose>-0.065085 0.012 0.0182 3.14159 0 -1.30911e-30</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/upper_arm_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="upper_arm_link_visual">
+        <pose>-0.11257 -0.0155 0.0187 -3.14159 -5.273559366969494e-16 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+      <visual name="upper_arm_link_visual_1">
+        <pose>-0.065085 0.012 0.0182 3.14159 0 -1.30911e-30</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/upper_arm_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="elbow_flex" type="revolute">
+      <pose relative_to="upper_arm_link">-0.11257 -0.028 1.73763e-16 -3.63608e-16 8.743010000000002e-16 1.5708</pose>
+      <parent>upper_arm_link</parent>
+      <child>lower_arm_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.6899999999999999</lower>
+          <upper>1.6899999999999999</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="lower_arm_link">
+      <pose relative_to="elbow_flex">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.09807009999999999 0.00324376 0.0182831 0 0 0</pose>
+        <mass>0.104</mass>
+        <inertia>
+          <ixx>2.8743800000000001e-05</ixx>
+          <ixy>7.4115199999999998e-06</ixy>
+          <ixz>1.26409e-06</ixz>
+          <iyy>0.000159844</iyy>
+          <iyz>-4.90188e-08</iyz>
+          <izz>0.00014529000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name="lower_arm_link_collision">
+        <pose>-0.0648499 -0.032 0.0182 3.14159 -1.670477943807622e-52 6.672020000000001e-31</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/under_arm_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="lower_arm_link_collision_1">
+        <pose>-0.0648499 -0.032 0.018 -3.14159 -2.55351e-15 -1.833870493045526e-30</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/motor_holder_so101_wrist_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="lower_arm_link_collision_2">
+        <pose>-0.1224 0.0052 0.0187 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="lower_arm_link_visual">
+        <pose>-0.0648499 -0.032 0.0182 3.14159 -1.670477943807622e-52 6.672020000000001e-31</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/under_arm_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name="lower_arm_link_visual_1">
+        <pose>-0.0648499 -0.032 0.018 -3.14159 -2.55351e-15 -1.833870493045526e-30</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/motor_holder_so101_wrist_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name="lower_arm_link_visual_2">
+        <pose>-0.1224 0.0052 0.0187 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="wrist_flex" type="revolute">
+      <pose relative_to="lower_arm_link">-0.1349 0.0052 3.62355e-17 4.02456e-15 8.673619999999998e-16 -1.5708</pose>
+      <parent>lower_arm_link</parent>
+      <child>wrist_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.6580600000000001</lower>
+          <upper>1.6580600000000001</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="wrist_link">
+      <pose relative_to="wrist_flex">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.000103312 -0.0386143 0.0281156 0 0 0</pose>
+        <mass>0.079000000000000001</mass>
+        <inertia>
+          <ixx>3.6826299999999997e-05</ixx>
+          <ixy>1.7893e-08</ixy>
+          <ixz>-5.28128e-08</ixz>
+          <iyy>2.5391000000000001e-05</iyy>
+          <iyz>3.6412e-06</iyz>
+          <izz>2.0999999999999999e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name="wrist_link_collision">
+        <pose>8.32667e-17 -0.0424 0.0306 0 1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_no_horn_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="wrist_link_collision_1">
+        <pose>0 -0.028 0.0181 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/wrist_roll_pitch_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="wrist_link_visual">
+        <pose>8.32667e-17 -0.0424 0.0306 0 1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_no_horn_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+      <visual name="wrist_link_visual_1">
+        <pose>0 -0.028 0.0181 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/wrist_roll_pitch_so101_v2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="wrist_roll" type="revolute">
+      <pose relative_to="wrist_link">5.551119999999999e-17 -0.0611 0.0181 1.5708 0.0486795 3.14159</pose>
+      <parent>wrist_link</parent>
+      <child>gripper_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.7438500000000001</lower>
+          <upper>2.8412099999999998</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="gripper_link">
+      <pose relative_to="wrist_roll">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.000213627 0.000245138 -0.025187 0 0 0</pose>
+        <mass>0.086999999999999994</mass>
+        <inertia>
+          <ixx>2.75087e-05</ixx>
+          <ixy>-3.35241e-07</ixy>
+          <ixz>-5.7351999999999997e-06</ixz>
+          <iyy>4.3365699999999997e-05</iyy>
+          <iyz>-5.17847e-08</iyz>
+          <izz>3.4505899999999998e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name="gripper_link_collision">
+        <pose>0.0077 0.0001 -0.0234 -1.5708 -5.191790000000001e-17 -1.66533e-16</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="gripper_link_collision_1">
+        <pose>8.32667e-17 -0.000218214 0.000949706 -3.14159 -5.551119999999999e-17 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/wrist_roll_follower_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="gripper_link_visual">
+        <pose>0.0077 0.0001 -0.0234 -1.5708 -5.191790000000001e-17 -1.66533e-16</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/sts3215_03a_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.0375 0.0375 0.0375 1</diffuse>
+          <ambient>0.0375 0.0375 0.0375 1</ambient>
+        </material>
+      </visual>
+      <visual name="gripper_link_visual_1">
+        <pose>8.32667e-17 -0.000218214 0.000949706 -3.14159 -5.551119999999999e-17 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/wrist_roll_follower_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name="gripper" type="revolute">
+      <pose relative_to="gripper_link">0.0202 0.0188 -0.0234 1.5708 -5.242840000000001e-08 -1.415530002118332e-15</pose>
+      <parent>gripper_link</parent>
+      <child>moving_jaw_so101_v1_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.17453299999999999</lower>
+          <upper>1.74533</upper>
+          <effort>10</effort>
+          <velocity>4</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.3</damping>
+          <friction>0.0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="moving_jaw_so101_v1_link">
+      <pose relative_to="gripper">0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.00157495 -0.0300244 0.0192755 0 0 0</pose>
+        <mass>0.012</mass>
+        <inertia>
+          <ixx>6.6142699999999999e-06</ixx>
+          <ixy>-3.1980700000000003e-07</ixy>
+          <ixz>-5.90717e-09</ixz>
+          <iyy>1.8903200000000001e-06</iyy>
+          <iyz>-1.09945e-07</iyz>
+          <izz>5.2873799999999998e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name="moving_jaw_so101_v1_link_collision">
+        <pose>-5.551119999999999e-17 -5.551119999999999e-17 0.0189 9.531450000001e-17 6.93889e-18 1.24077e-24</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/moving_jaw_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="moving_jaw_so101_v1_link_visual">
+        <pose>-5.551119999999999e-17 -5.551119999999999e-17 0.0189 9.531450000000001e-17 6.93889e-18 1.24077e-24</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>assets/moving_jaw_so101_v1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <plugin name="ign_ros2_control::IgnitionROS2ControlPlugin" filename="ign_ros2_control-system">
+      <parameters>controllers.yaml</parameters>
+    </plugin>
+    <plugin name="ignition::gazebo::systems::Label" filename="ignition-gazebo-label-system">
+      <label>10</label>
+    </plugin>
+  </model>
+</sdf>

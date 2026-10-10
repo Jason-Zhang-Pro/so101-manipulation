@@ -1,0 +1,38 @@
+{
+  "dataset": {
+    "repo_id": "local/so101_black15",
+    "root": "datasets/so101_black15",
+    "task": "Pick up the red block and place it in the target area",
+    "fps": 15
+  },
+  "hardware": {
+    "follower_id": "my_awesome_follower_arm",
+    "follower_port": "/dev/ttyACM1",
+    "leader_id": "my_awesome_leader_arm",
+    "leader_port": "/dev/ttyACM0",
+    "cameras": {
+      "fixed": {"type": "opencv", "index_or_path": "/dev/video2", "width": 640, "height": 480, "fps": 30},
+      "handeye": {"type": "opencv", "index_or_path": "/dev/video4", "width": 640, "height": 480, "fps": 30}
+    }
+  },
+  "record": {"num_episodes": 150, "episode_time_s": 35, "reset_time_s": 5},
+  "train": {
+    "batch_size": 8,
+    "steps": 100000,
+    "save_freq": 2000,
+    "log_freq": 50,
+    "num_workers": 0,
+    "seed": 1000,
+    "device": "cuda",
+    "chunk_size": 50,
+    "n_action_steps": 1,
+    "kl_weight": 0.5,
+    "temporal_ensemble_coeff": 0.005,
+    "optimizer_lr": 0.00001,
+    "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+    "image_augmentation": false
+  },
+  "deploy": {"num_episodes": 1, "episode_time_s": 35, "reset_time_s": 10},
+  "display_data": true,
+  "play_sounds": false
+}

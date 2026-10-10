@@ -1,0 +1,428 @@
+[
+  {
+    "source": "Control so101/classic_grasp_cube.py",
+    "destination": "control/classic_grasp_cube.py",
+    "bytes": 39741,
+    "source_sha256": "dfb5d8e1fe5fa6814885bbd2107ce774503b6327f3e385cdefadda1218e6f7f2"
+  },
+  {
+    "source": "so101/gazebo_play_reach.py",
+    "destination": "learning/ppo/gazebo_play_reach.py",
+    "bytes": 4049,
+    "source_sha256": "e29a9f732602d1ae0589cd1686319bcd9ccf4c430ffb3a193329bba816ec765b"
+  },
+  {
+    "source": "so101/gazebo_train_reach_ppo.py",
+    "destination": "learning/ppo/gazebo_train_reach_ppo.py",
+    "bytes": 25895,
+    "source_sha256": "ba7ca5778696b265000e529d6ab7f9605ac347ae01e7ce8c62939c6766be151e"
+  },
+  {
+    "source": "so101/so101_gazebo_ros_env.py",
+    "destination": "learning/ppo/so101_gazebo_ros_env.py",
+    "bytes": 50847,
+    "source_sha256": "e35658504518a9e4d81dc452270bfa32cbf9a543b11a6b84c7cc8895e76e294f"
+  },
+  {
+    "source": "so101_description/CMakeLists.txt",
+    "destination": "ros/src/so101_description/CMakeLists.txt",
+    "bytes": 195,
+    "source_sha256": "954ccd10f889a86856245d7bc49a1aba48c48efd11f2778772d2f3bac903763c"
+  },
+  {
+    "source": "so101_description/launch/display.launch.py",
+    "destination": "ros/src/so101_description/launch/display.launch.py",
+    "bytes": 991,
+    "source_sha256": "0f862ed6ad61363e2b1c7d6819f782c6f65c22bd887522fe3aa988f151740cdb"
+  },
+  {
+    "source": "so101_description/meshes/base_motor_holder_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/base_motor_holder_so101_v1.stl",
+    "bytes": 1877084,
+    "source_sha256": "8cd2f241037ea377af1191fffe0dd9d9006beea6dcc48543660ed41647072424"
+  },
+  {
+    "source": "so101_description/meshes/base_so101_v2.stl",
+    "destination": "ros/src/so101_description/meshes/base_so101_v2.stl",
+    "bytes": 471584,
+    "source_sha256": "bb12b7026575e1f70ccc7240051f9d943553bf34e5128537de6cd86fae33924d"
+  },
+  {
+    "source": "so101_description/meshes/gripper_camera_mount.stl",
+    "destination": "ros/src/so101_description/meshes/gripper_camera_mount.stl",
+    "bytes": 175884,
+    "source_sha256": "c03d6b7906b6786254d84bc9ed150f22f8e28160cb75fe18bde02a3612e4034e"
+  },
+  {
+    "source": "so101_description/meshes/motor_holder_so101_base_v1.stl",
+    "destination": "ros/src/so101_description/meshes/motor_holder_so101_base_v1.stl",
+    "bytes": 1129384,
+    "source_sha256": "31242ae6fb59d8b15c66617b88ad8e9bded62d57c35d11c0c43a70d2f4caa95b"
+  },
+  {
+    "source": "so101_description/meshes/motor_holder_so101_wrist_v1.stl",
+    "destination": "ros/src/so101_description/meshes/motor_holder_so101_wrist_v1.stl",
+    "bytes": 1052184,
+    "source_sha256": "887f92e6013cb64ea3a1ab8675e92da1e0beacfd5e001f972523540545e08011"
+  },
+  {
+    "source": "so101_description/meshes/moving_jaw_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/moving_jaw_so101_v1.stl",
+    "bytes": 1413584,
+    "source_sha256": "785a9dded2f474bc1d869e0d3dae398a3dcd9c0c345640040472210d2861fa9d"
+  },
+  {
+    "source": "so101_description/meshes/rotation_pitch_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/rotation_pitch_so101_v1.stl",
+    "bytes": 883684,
+    "source_sha256": "9be900cc2a2bf718102841ef82ef8d2873842427648092c8ed2ca1e2ef4ffa34"
+  },
+  {
+    "source": "so101_description/meshes/sts3215_03a_no_horn_v1.stl",
+    "destination": "ros/src/so101_description/meshes/sts3215_03a_no_horn_v1.stl",
+    "bytes": 865884,
+    "source_sha256": "75ef3781b752e4065891aea855e34dc161a38a549549cd0970cedd07eae6f887"
+  },
+  {
+    "source": "so101_description/meshes/sts3215_03a_v1.stl",
+    "destination": "ros/src/so101_description/meshes/sts3215_03a_v1.stl",
+    "bytes": 954084,
+    "source_sha256": "a37c871fb502483ab96c256baf457d36f2e97afc9205313d9c5ab275ef941cd0"
+  },
+  {
+    "source": "so101_description/meshes/under_arm_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/under_arm_so101_v1.stl",
+    "bytes": 1975884,
+    "source_sha256": "d01d1f2de365651dcad9d6669e94ff87ff7652b5bb2d10752a66a456a86dbc71"
+  },
+  {
+    "source": "so101_description/meshes/upper_arm_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/upper_arm_so101_v1.stl",
+    "bytes": 1303484,
+    "source_sha256": "475056e03a17e71919b82fd88ab9a0b898ab50164f2a7943652a6b2941bb2d4f"
+  },
+  {
+    "source": "so101_description/meshes/waveshare_mounting_plate_so101_v2.stl",
+    "destination": "ros/src/so101_description/meshes/waveshare_mounting_plate_so101_v2.stl",
+    "bytes": 62784,
+    "source_sha256": "e197e24005a07d01bbc06a8c42311664eaeda415bf859f68fa247884d0f1a6e9"
+  },
+  {
+    "source": "so101_description/meshes/wrist_roll_follower_so101_v1.stl",
+    "destination": "ros/src/so101_description/meshes/wrist_roll_follower_so101_v1.stl",
+    "bytes": 1439884,
+    "source_sha256": "4b17b410a12d64ec39554abc3e8054d8a97384b2dc4a8d95a5ecb2a93670f5f4"
+  },
+  {
+    "source": "so101_description/meshes/wrist_roll_pitch_so101_v2.stl",
+    "destination": "ros/src/so101_description/meshes/wrist_roll_pitch_so101_v2.stl",
+    "bytes": 2699784,
+    "source_sha256": "6c7ec5525b4d8b9e397a30ab4bb0037156a5d5f38a4adf2c7d943d6c56eda5ae"
+  },
+  {
+    "source": "so101_description/meshes/\u6444\u50cf\u5934\u652f\u67b6.stl",
+    "destination": "ros/src/so101_description/meshes/\u6444\u50cf\u5934\u652f\u67b6.stl",
+    "bytes": 175884,
+    "source_sha256": "c03d6b7906b6786254d84bc9ed150f22f8e28160cb75fe18bde02a3612e4034e"
+  },
+  {
+    "source": "so101_description/package.xml",
+    "destination": "ros/src/so101_description/package.xml",
+    "bytes": 759,
+    "source_sha256": "0500501df7fe05c0774c9e881bbf3b2612c0448f903d904dff6c0e16f93917c0"
+  },
+  {
+    "source": "so101_description/urdf/so101_moveit.urdf",
+    "destination": "ros/src/so101_description/urdf/so101_moveit.urdf",
+    "bytes": 15868,
+    "source_sha256": "5ffbe0ad39b63efed263e5a6d6837af61d8847825355e9b7855566bfb107ee75"
+  },
+  {
+    "source": "so101_description/urdf/so101_moveit_fast_collision.urdf",
+    "destination": "ros/src/so101_description/urdf/so101_moveit_fast_collision.urdf",
+    "bytes": 11757,
+    "source_sha256": "bf7668ea8bae38b54f6aebea5c371bb97f85ad2a2aadd6a3b3abd31e3f0506d0"
+  },
+  {
+    "source": "so101_moveit_config/.setup_assistant",
+    "destination": "ros/src/so101_moveit_config/.setup_assistant",
+    "bytes": 498,
+    "source_sha256": "36346e616c302d103a790ca50cc573694d9bdfb3d0f56c9fa8b3dccbcf8e1f8f"
+  },
+  {
+    "source": "so101_moveit_config/CMakeLists.txt",
+    "destination": "ros/src/so101_moveit_config/CMakeLists.txt",
+    "bytes": 419,
+    "source_sha256": "541dcab0feb18f3f6b1ca04e90e56d649bedf6a7bea0a24f0630c5f07cfe40eb"
+  },
+  {
+    "source": "so101_moveit_config/config/initial_positions.yaml",
+    "destination": "ros/src/so101_moveit_config/config/initial_positions.yaml",
+    "bytes": 217,
+    "source_sha256": "07c9a7657b798d89277fc0141286b7682ba549640de1b1921f1a3a08fd32813b"
+  },
+  {
+    "source": "so101_moveit_config/config/joint_limits.yaml",
+    "destination": "ros/src/so101_moveit_config/config/joint_limits.yaml",
+    "bytes": 1396,
+    "source_sha256": "4784048de26a85f868a67f58a02c580ea85eafa19e9e2126a6258ffc1bbc7554"
+  },
+  {
+    "source": "so101_moveit_config/config/kinematics.yaml",
+    "destination": "ros/src/so101_moveit_config/config/kinematics.yaml",
+    "bytes": 219,
+    "source_sha256": "5391828110a81dc1c3e6482295d54fbe8bf3fce759f6555e8c2b99b83c0cf437"
+  },
+  {
+    "source": "so101_moveit_config/config/moveit.rviz",
+    "destination": "ros/src/so101_moveit_config/config/moveit.rviz",
+    "bytes": 1906,
+    "source_sha256": "261af7e8b71bfa690ba083c592def7a86e1ecfe5503eed6c1bd3cbeae7787cf4"
+  },
+  {
+    "source": "so101_moveit_config/config/pilz_cartesian_limits.yaml",
+    "destination": "ros/src/so101_moveit_config/config/pilz_cartesian_limits.yaml",
+    "bytes": 133,
+    "source_sha256": "fed80b213b77f13fb7b913d703609a66caa72ccb0617b41e83d3057e31749047"
+  },
+  {
+    "source": "so101_moveit_config/config/so101_new_calib.ros2_control.xacro",
+    "destination": "ros/src/so101_moveit_config/config/so101_new_calib.ros2_control.xacro",
+    "bytes": 2629,
+    "source_sha256": "8820de16d41f73e6551273dca4ebdf54fc3130c2b939b32629fff33505bf0cb6"
+  },
+  {
+    "source": "so101_moveit_config/config/so101_new_calib.srdf",
+    "destination": "ros/src/so101_moveit_config/config/so101_new_calib.srdf",
+    "bytes": 3573,
+    "source_sha256": "614e2ed556b168c2a51995e09b526fdb02ac6ed8b3982e21df755154b09395e5"
+  },
+  {
+    "source": "so101_moveit_config/config/so101_new_calib.urdf.xacro",
+    "destination": "ros/src/so101_moveit_config/config/so101_new_calib.urdf.xacro",
+    "bytes": 537,
+    "source_sha256": "9d7a30cbe4a340a9d466db92afbc276a75ebe37872f77890644924a59cd3709a"
+  },
+  {
+    "source": "so101_moveit_config/launch/demo.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/demo.launch.py",
+    "bytes": 317,
+    "source_sha256": "9f6e44bc4e8f899a1efee60747fb0424c26c91770ff302139204dcb0d9e7e532"
+  },
+  {
+    "source": "so101_moveit_config/launch/move_group.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/move_group.launch.py",
+    "bytes": 329,
+    "source_sha256": "2bcfed447b8fa9204c3f092027150454c3ca191e955d78d7b252520b5308fbd2"
+  },
+  {
+    "source": "so101_moveit_config/launch/moveit_rviz.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/moveit_rviz.launch.py",
+    "bytes": 331,
+    "source_sha256": "389800bc48e0ceccd139a68065c533c45eeda15b726dc2bd1093bd87a9defae1"
+  },
+  {
+    "source": "so101_moveit_config/launch/rsp.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/rsp.launch.py",
+    "bytes": 315,
+    "source_sha256": "c71bdb6eb233eda474b91848c8fa443652b6c27e22c4aa06d9aef87981ffde0e"
+  },
+  {
+    "source": "so101_moveit_config/launch/setup_assistant.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/setup_assistant.launch.py",
+    "bytes": 339,
+    "source_sha256": "18c8e9a9207861c419cf542b997d570e7cc5a5a109d62a842bcc94b7571585aa"
+  },
+  {
+    "source": "so101_moveit_config/launch/spawn_controllers.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/spawn_controllers.launch.py",
+    "bytes": 343,
+    "source_sha256": "bcf27e384b6dc0978e530955d818af6b299eac99352e7439d749a123228007bf"
+  },
+  {
+    "source": "so101_moveit_config/launch/static_virtual_joint_tfs.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/static_virtual_joint_tfs.launch.py",
+    "bytes": 357,
+    "source_sha256": "a8cc3aecd436205f7c8f19284826f09e511a806e0ea6aacffe3eb3304821dc63"
+  },
+  {
+    "source": "so101_moveit_config/launch/warehouse_db.launch.py",
+    "destination": "ros/src/so101_moveit_config/launch/warehouse_db.launch.py",
+    "bytes": 333,
+    "source_sha256": "bf842ae4bd3759d1a0996207f8cd50ac9505f3bda719c6c46289b2c52f8fb814"
+  },
+  {
+    "source": "so101_moveit_config/package.xml",
+    "destination": "ros/src/so101_moveit_config/package.xml",
+    "bytes": 2210,
+    "source_sha256": "1b4aa489a13c89c4c7932beedc06222a6656435a62f09f1e0ec40e3911022191"
+  },
+  {
+    "source": "so101_ros2/controllers.yaml",
+    "destination": "simulation/config/controllers.yaml",
+    "bytes": 453,
+    "source_sha256": "e66aee5e70c9c467faf4675a9aad4c17b81780af14b8f8779e1c6da598587ebc"
+  },
+  {
+    "source": "tools/act_latent_to_tensorboard.py",
+    "destination": "learning/act/act_latent_to_tensorboard.py",
+    "bytes": 9998,
+    "source_sha256": "44c14e7c08e7aa9be0967e51c957370d961f6e8a8d76cfb13700c6c72f313212"
+  },
+  {
+    "source": "tools/create_fixed_only_dataset.py",
+    "destination": "evaluation/create_fixed_only_dataset.py",
+    "bytes": 2449,
+    "source_sha256": "6349a3565c599c54b2a1c1edab9fe50aa3ce5d5a7e39c01d6cb4cee54a06a93d"
+  },
+  {
+    "source": "tools/cube_vision_calibrator.py",
+    "destination": "tools/cube_vision_calibrator.py",
+    "bytes": 12780,
+    "source_sha256": "d4e9fbdb265a4101414379e6964e95a0b5152db80655e542d79285249da432e2"
+  },
+  {
+    "source": "tools/lerobot_log_to_tensorboard.py",
+    "destination": "learning/act/lerobot_log_to_tensorboard.py",
+    "bytes": 1205,
+    "source_sha256": "dd91cbfbb9eceff140eaeae2f896fdeabcbdda3c5bd63773746e91269976bd3b"
+  },
+  {
+    "source": "tools/lerobot_record_log_actions.py",
+    "destination": "learning/act/lerobot_record_log_actions.py",
+    "bytes": 3840,
+    "source_sha256": "eb1c69ec2c59c87e8818f52cff1ff35a909e674180b770dc9e9f70286f165394"
+  },
+  {
+    "source": "tools/real_to_sim_so101.py",
+    "destination": "tools/real_to_sim_so101.py",
+    "bytes": 6976,
+    "source_sha256": "499d8da01245939b8d455cece301048c88428e50f20df18a59d42382e4b49536"
+  },
+  {
+    "source": "tools/real_top_camera_calibrate.py",
+    "destination": "tools/real_top_camera_calibrate.py",
+    "bytes": 8592,
+    "source_sha256": "5c3bcac574b90f91600fdb0547995f990d79c5d269748d2d0433ba087ca71a1a"
+  },
+  {
+    "source": "tools/reset_so101_scene.py",
+    "destination": "tools/reset_so101_scene.py",
+    "bytes": 6104,
+    "source_sha256": "01ff1b9b0074d057b1a82c0f747c888c11b230427c561e3f1123cbe59153d601"
+  },
+  {
+    "source": "tools/run_lerobot_policy_gazebo.py",
+    "destination": "learning/act/run_lerobot_policy_gazebo.py",
+    "bytes": 21067,
+    "source_sha256": "ae18bd4d9c0172e4c595b21e2b65b47e6053da27f025dd8bb97f1428c00c1993"
+  },
+  {
+    "source": "worlds/assets/base_motor_holder_so101_v1.stl",
+    "destination": "simulation/worlds/assets/base_motor_holder_so101_v1.stl",
+    "bytes": 1877084,
+    "source_sha256": "8cd2f241037ea377af1191fffe0dd9d9006beea6dcc48543660ed41647072424"
+  },
+  {
+    "source": "worlds/assets/base_so101_v2.stl",
+    "destination": "simulation/worlds/assets/base_so101_v2.stl",
+    "bytes": 471584,
+    "source_sha256": "bb12b7026575e1f70ccc7240051f9d943553bf34e5128537de6cd86fae33924d"
+  },
+  {
+    "source": "worlds/assets/gripper_camera_mount.stl",
+    "destination": "simulation/worlds/assets/gripper_camera_mount.stl",
+    "bytes": 175884,
+    "source_sha256": "c03d6b7906b6786254d84bc9ed150f22f8e28160cb75fe18bde02a3612e4034e"
+  },
+  {
+    "source": "worlds/assets/motor_holder_so101_base_v1.stl",
+    "destination": "simulation/worlds/assets/motor_holder_so101_base_v1.stl",
+    "bytes": 1129384,
+    "source_sha256": "31242ae6fb59d8b15c66617b88ad8e9bded62d57c35d11c0c43a70d2f4caa95b"
+  },
+  {
+    "source": "worlds/assets/motor_holder_so101_wrist_v1.stl",
+    "destination": "simulation/worlds/assets/motor_holder_so101_wrist_v1.stl",
+    "bytes": 1052184,
+    "source_sha256": "887f92e6013cb64ea3a1ab8675e92da1e0beacfd5e001f972523540545e08011"
+  },
+  {
+    "source": "worlds/assets/moving_jaw_so101_v1.stl",
+    "destination": "simulation/worlds/assets/moving_jaw_so101_v1.stl",
+    "bytes": 1413584,
+    "source_sha256": "785a9dded2f474bc1d869e0d3dae398a3dcd9c0c345640040472210d2861fa9d"
+  },
+  {
+    "source": "worlds/assets/rotation_pitch_so101_v1.stl",
+    "destination": "simulation/worlds/assets/rotation_pitch_so101_v1.stl",
+    "bytes": 883684,
+    "source_sha256": "9be900cc2a2bf718102841ef82ef8d2873842427648092c8ed2ca1e2ef4ffa34"
+  },
+  {
+    "source": "worlds/assets/sts3215_03a_no_horn_v1.stl",
+    "destination": "simulation/worlds/assets/sts3215_03a_no_horn_v1.stl",
+    "bytes": 865884,
+    "source_sha256": "75ef3781b752e4065891aea855e34dc161a38a549549cd0970cedd07eae6f887"
+  },
+  {
+    "source": "worlds/assets/sts3215_03a_v1.stl",
+    "destination": "simulation/worlds/assets/sts3215_03a_v1.stl",
+    "bytes": 954084,
+    "source_sha256": "a37c871fb502483ab96c256baf457d36f2e97afc9205313d9c5ab275ef941cd0"
+  },
+  {
+    "source": "worlds/assets/under_arm_so101_v1.stl",
+    "destination": "simulation/worlds/assets/under_arm_so101_v1.stl",
+    "bytes": 1975884,
+    "source_sha256": "d01d1f2de365651dcad9d6669e94ff87ff7652b5bb2d10752a66a456a86dbc71"
+  },
+  {
+    "source": "worlds/assets/upper_arm_so101_v1.stl",
+    "destination": "simulation/worlds/assets/upper_arm_so101_v1.stl",
+    "bytes": 1303484,
+    "source_sha256": "475056e03a17e71919b82fd88ab9a0b898ab50164f2a7943652a6b2941bb2d4f"
+  },
+  {
+    "source": "worlds/assets/waveshare_mounting_plate_so101_v2.stl",
+    "destination": "simulation/worlds/assets/waveshare_mounting_plate_so101_v2.stl",
+    "bytes": 62784,
+    "source_sha256": "e197e24005a07d01bbc06a8c42311664eaeda415bf859f68fa247884d0f1a6e9"
+  },
+  {
+    "source": "worlds/assets/wrist_roll_follower_so101_v1.stl",
+    "destination": "simulation/worlds/assets/wrist_roll_follower_so101_v1.stl",
+    "bytes": 1439884,
+    "source_sha256": "4b17b410a12d64ec39554abc3e8054d8a97384b2dc4a8d95a5ecb2a93670f5f4"
+  },
+  {
+    "source": "worlds/assets/wrist_roll_pitch_so101_v2.stl",
+    "destination": "simulation/worlds/assets/wrist_roll_pitch_so101_v2.stl",
+    "bytes": 2699784,
+    "source_sha256": "6c7ec5525b4d8b9e397a30ab4bb0037156a5d5f38a4adf2c7d943d6c56eda5ae"
+  },
+  {
+    "source": "worlds/assets/\u6444\u50cf\u5934\u652f\u67b6.stl",
+    "destination": "simulation/worlds/assets/\u6444\u50cf\u5934\u652f\u67b6.stl",
+    "bytes": 175884,
+    "source_sha256": "c03d6b7906b6786254d84bc9ed150f22f8e28160cb75fe18bde02a3612e4034e"
+  },
+  {
+    "source": "worlds/grasp_world.sdf",
+    "destination": "simulation/worlds/grasp_world.sdf",
+    "bytes": 12583,
+    "source_sha256": "7cf027bc78a9a0ca414a99bf34770936188a87d86806973799058034e8b17996"
+  },
+  {
+    "source": "worlds/so101.sdf",
+    "destination": "simulation/worlds/so101.sdf",
+    "bytes": 25619,
+    "source_sha256": "5252a31ac568ce21c2d0c20ad6e5f57ca845680afc8f7de8009f1d63020a59fa"
+  },
+  {
+    "source": "worlds/so101.urdf",
+    "destination": "simulation/worlds/so101.urdf",
+    "bytes": 16667,
+    "source_sha256": "3bc3430afa5ffd02f0e24cf3116dc7d7d6df38a97f0bed5b6a0ebd0476e4bc30"
+  }
+]
