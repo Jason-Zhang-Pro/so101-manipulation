@@ -1,5 +1,9 @@
 # Observed LeRobot Environment
 
+> Integration update: the active shared source is now `lerobot/`. This page
+> preserves the original environment snapshot; see `integration_zh.md` for the
+> combined runtime and `integration_sources.json` for pinned source commits.
+
 Local LeRobot base commit inspected: `882c80d446a63a44868c67ae535467af32ce0e80`.
 This checkout has uncommitted changes to the camera implementation, camera utils,
 policy config, motor bus and trainer. A clean checkout at this commit does not

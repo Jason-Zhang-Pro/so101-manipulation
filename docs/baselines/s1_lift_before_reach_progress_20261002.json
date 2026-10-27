@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "label": "明显进步：S1 先抬升，再 reach",
+  "recorded_at": "2026-10-02T03:41:59.569538+08:00",
+  "git_tag": "reward-s1-lift-before-reach-progress",
+  "reward_behavior": "S1同一10秒episode内先将抓取参考点抬至桌面上方8cm，再从上方接近目标；全程引导对准与顺时针转腕90度；S0最多5秒。",
+  "assessment": "使用先抬升再reach奖励的训练记录显示：抬升完成率和接近能力有明显进步。",
+  "run_directory": "output_simulation/finetuned/act_ppo_20261001_182324_from_checkpoints",
+  "latest_completed_update": 40,
+  "checkpoint_directory": "output_simulation/finetuned/act_ppo_20261001_182324_from_checkpoints/checkpoints/update_000040",
+  "artifacts": [
+    {
+      "path": "output_simulation/finetuned/act_ppo_20261001_182324_from_checkpoints/config.json",
+      "size_bytes": 40062,
+      "sha256": "f786a231e105d86d4b402d2987de230f7a4fd40b47ee6b9b660bb2dbc42b2724"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20261001_182324_from_checkpoints/checkpoints/update_000040/pretrained_model/resolved_stages.json",
+      "size_bytes": 2185,
+      "sha256": "a03635de198de7d779c17db63018c10bf409b3fef96b86a8ffe7530aba09ee1f"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20261001_182324_from_checkpoints/checkpoints/update_000040/pretrained_model/model.safetensors",
+      "size_bytes": 206352904,
+      "sha256": "2b7a3af138010a85031400802781b00af48d69752c8fe78f096e19855f04b556"
+    }
+  ],
+  "episode_snapshot": {
+    "cutoff_episode_index": 443,
+    "episode_count": 444,
+    "s0_count": 240,
+    "s1_count": 204,
+    "s0_success_count": 0,
+    "s1_success_count": 0,
+    "s1_lift_completed_count": 179,
+    "s1_with_reach_candidate_evidence_count": 0,
+    "all_episode_json_path_and_bytes_sha256": "070e8f637857c43171c81b54b4beb84e913190c5581f72e82a62ff383e80548b",
+    "digest_rule": "Sorted episode JSON path in UTF-8 + NUL + raw file bytes, concatenated for episode index 0..443."
+  },
+  "first_20_s1": {
+    "episode_indices": [
+      0,
+      1,
+      2,
+      3,
+      10,
+      11,
+      12,
+      13,
+      14,
+      21,
+      22,
+      23,
+      24,
+      25,
+      32,
+      33,
+      34,
+      35,
+      36,
+      43
+    ],
+    "count": 20,
+    "lift_completed_count": 11,
+    "lift_completed_fraction": 0.55,
+    "mean_minimum_distance_m": 0.060613062036263064,
+    "mean_final_distance_m": 0.09639069803739422,
+    "mean_final_roll_error_deg": 104.934485112314,
+    "mean_final_parallel_error_deg": 13.32620026796755,
+    "stage_success_count": 0
+  },
+  "last_20_s1": {
+    "episode_indices": [
+      406,
+      407,
+      408,
+      409,
+      410,
+      417,
+      418,
+      419,
+      420,
+      421,
+      428,
+      429,
+      430,
+      431,
+      432,
+      439,
+      440,
+      441,
+      442,
+      443
+    ],
+    "count": 20,
+    "lift_completed_count": 20,
+    "lift_completed_fraction": 1.0,
+    "mean_minimum_distance_m": 0.03079287163157881,
+    "mean_final_distance_m": 0.07288485695270604,
+    "mean_final_roll_error_deg": 75.94372281482764,
+    "mean_final_parallel_error_deg": 21.278368967615325,
+    "stage_success_count": 0
+  },
+  "current_stage_configuration": {
+    "path": "config/act_ppo_stages_s1_lift_approach.json",
+    "size_bytes": 2185,
+    "sha256": "8d3bc229df4df3bc69ebb30cc4661051d67ac4219f7a2b407ae739f894ba520f"
+  },
+  "difference_from_observed_training": {
+    "path": "process_reward.s1_potential_weights[4] (bearing)",
+    "observed_training_value": 5.0,
+    "committed_current_value": 6.0,
+    "only_stage_configuration_difference": true,
+    "training_effect_of_change": "尚未训练验证；不能把上述改善归因于5→6调整。"
+  },
+  "limitations": [
+    "统计来自同一run最早/最近各20个S1，带探索和训练图像增强；不是关闭探索的独立评估，也不是新旧reward对照实验。",
+    "S0/S1正式成功均为0；转腕与平行度仍未全面达标，不代表完成抓取或解决全部卡桌问题。",
+    "最新20个episode包含update40后的采集，不等于update40单模型的独立测试结果。",
+    "Git保存代码、配置和此摘要，训练输出与模型权重仍只保存在本地output_simulation。"
+  ],
+  "validation": {
+    "current_reward_related_offline_tests_passed": 62,
+    "broader_offline_tests_before_bearing_increase_passed": 1626,
+    "new_training_or_gazebo_started_for_this_commit": false
+  }
+}

@@ -1,5 +1,9 @@
 # Reproduce the Local LeRobot Changes
 
+> Historical reproduction instructions. The integrated checkout already contains
+> these selected changes in `lerobot/`, plus ACT-PPO and latent logging changes.
+> Do not apply this patch to the integrated source. See `integration_zh.md`.
+
 Base commit: `882c80d446a63a44868c67ae535467af32ce0e80`.
 The patch records the current working-tree source changes, not new algorithm
 changes. It excludes binary test fixtures, datasets, checkpoints and credentials.

@@ -1,0 +1,511 @@
+{
+  "generated_at": "2026-08-09T01:19:15.216739",
+  "project_root": "/media/tiger/New Volume/ubuntufile/capstone",
+  "source_xacro": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/urdf/so101.urdf.xacro",
+  "note": "Inspection only. Source Xacro and original STL files were not modified.",
+  "grasp_critical_meshes": [
+    "moving_jaw_so101_v1.stl",
+    "wrist_roll_follower_so101_v1.stl"
+  ],
+  "generated_meshes": {
+    "base_motor_holder_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/base_motor_holder_so101_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "base_motor_holder_so101_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "base_so101_v2.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/base_so101_v2.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "base_so101_v2__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "gripper_camera_mount.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/gripper_camera_mount.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "gripper_camera_mount__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "motor_holder_so101_base_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/motor_holder_so101_base_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "motor_holder_so101_base_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "motor_holder_so101_wrist_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/motor_holder_so101_wrist_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "motor_holder_so101_wrist_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "moving_jaw_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/moving_jaw_so101_v1.stl",
+      "profile": "functional_2hull_filled_body_plus_moving_finger",
+      "proxy_files": [
+        "moving_jaw_so101_v1__functional_body__part_00.stl",
+        "moving_jaw_so101_v1__functional_finger__part_01.stl"
+      ],
+      "functional_partition": {
+        "recommended_candidate": "candidate_03",
+        "finger_fraction": 0.34,
+        "overlap_fraction": 0.035,
+        "reference_contact_kind": "first_contact",
+        "original_contact_q_deg": -0.32000013714422576,
+        "original_gap_mm": 0.3478148743393302,
+        "candidate_first_touching_part": "finger",
+        "candidate_first_contact_q_deg": -0.4300001842875454,
+        "body_gap_mm_at_first_contact": 14.302368994161222,
+        "finger_gap_mm_at_first_contact": 0.26832393144063554,
+        "minimum_body_gap_before_contact_mm": 14.302368994161222,
+        "body_faces": 44,
+        "finger_faces": 44
+      }
+    },
+    "rotation_pitch_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/rotation_pitch_so101_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "rotation_pitch_so101_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "sts3215_03a_no_horn_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/sts3215_03a_no_horn_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "sts3215_03a_no_horn_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "sts3215_03a_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/sts3215_03a_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "sts3215_03a_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "under_arm_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/under_arm_so101_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "under_arm_so101_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "upper_arm_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/upper_arm_so101_v1.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "upper_arm_so101_v1__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "waveshare_mounting_plate_so101_v2.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/waveshare_mounting_plate_so101_v2.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "waveshare_mounting_plate_so101_v2__ultralow_1hull__part_00.stl"
+      ]
+    },
+    "wrist_roll_follower_so101_v1.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/wrist_roll_follower_so101_v1.stl",
+      "profile": "functional_2hull_filled_body_plus_fixed_finger",
+      "proxy_files": [
+        "wrist_roll_follower_so101_v1__functional_body__part_00.stl",
+        "wrist_roll_follower_so101_v1__functional_finger__part_01.stl"
+      ],
+      "functional_partition": {
+        "recommended_candidate": "candidate_03",
+        "finger_fraction": 0.36,
+        "overlap_fraction": 0.04,
+        "original_cube_gap_mm": 0.0,
+        "body_cube_gap_mm": 15.70128407576829,
+        "finger_cube_gap_mm": 0.0,
+        "body_faces": 44,
+        "finger_faces": 42
+      }
+    },
+    "wrist_roll_pitch_so101_v2.stl": {
+      "source": "/media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/meshes/wrist_roll_pitch_so101_v2.stl",
+      "profile": "ultralow_1hull",
+      "coacd_parameters": {
+        "threshold": 1.0,
+        "max_convex_hull": 1,
+        "preprocess_mode": "auto",
+        "preprocess_resolution": 25,
+        "resolution": 1000,
+        "mcts_nodes": 10,
+        "mcts_iterations": 60,
+        "mcts_max_depth": 2,
+        "merge": true,
+        "decimate": true,
+        "max_ch_vertex": 24,
+        "pca": false,
+        "apx_mode": "ch",
+        "seed": 0
+      },
+      "proxy_files": [
+        "wrist_roll_pitch_so101_v2__ultralow_1hull__part_00.stl"
+      ]
+    }
+  },
+  "collision_uses": [
+    {
+      "link": "base_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/base_motor_holder_so101_v1.stl",
+      "mesh_relative": "base_motor_holder_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.00636471 -9.94414e-05 -0.0024",
+      "origin_rpy": "1.5708 -1.67685e-15 1.5708"
+    },
+    {
+      "link": "base_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/base_so101_v2.stl",
+      "mesh_relative": "base_so101_v2.stl",
+      "scale": null,
+      "origin_xyz": "-0.00636471 -8.97657e-09 -0.0024",
+      "origin_rpy": "1.5708 -2.78073e-29 1.5708"
+    },
+    {
+      "link": "base_link",
+      "collision_index": 2,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_v1.stl",
+      "mesh_relative": "sts3215_03a_v1.stl",
+      "scale": null,
+      "origin_xyz": "0.0263353 -8.97657e-09 0.0437",
+      "origin_rpy": "-8.21148e-16 7.84513e-18 1.249e-15"
+    },
+    {
+      "link": "base_link",
+      "collision_index": 3,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/waveshare_mounting_plate_so101_v2.stl",
+      "mesh_relative": "waveshare_mounting_plate_so101_v2.stl",
+      "scale": null,
+      "origin_xyz": "-0.0309827 -0.000199441 0.0474",
+      "origin_rpy": "1.5708 -1.35493e-14 1.5708"
+    },
+    {
+      "link": "shoulder_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_v1.stl",
+      "mesh_relative": "sts3215_03a_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.0303992 0.000422241 -0.0417",
+      "origin_rpy": "1.5708 1.5708 0"
+    },
+    {
+      "link": "shoulder_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/motor_holder_so101_base_v1.stl",
+      "mesh_relative": "motor_holder_so101_base_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.0675992 -0.000177759 0.0158499",
+      "origin_rpy": "1.5708 -1.5708 0"
+    },
+    {
+      "link": "shoulder_link",
+      "collision_index": 2,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/rotation_pitch_so101_v1.stl",
+      "mesh_relative": "rotation_pitch_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "0.0122008 2.22413e-05 0.0464",
+      "origin_rpy": "-1.5708 2.35221e-33 0"
+    },
+    {
+      "link": "upper_arm_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_v1.stl",
+      "mesh_relative": "sts3215_03a_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.11257 -0.0155 0.0187",
+      "origin_rpy": "-3.14159 -5.27356e-16 -1.5708"
+    },
+    {
+      "link": "upper_arm_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/upper_arm_so101_v1.stl",
+      "mesh_relative": "upper_arm_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.065085 0.012 0.0182",
+      "origin_rpy": "3.14159 -0 -1.30911e-30"
+    },
+    {
+      "link": "lower_arm_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/under_arm_so101_v1.stl",
+      "mesh_relative": "under_arm_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.0648499 -0.032 0.0182",
+      "origin_rpy": "3.14159 -0 6.67202e-31"
+    },
+    {
+      "link": "lower_arm_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/motor_holder_so101_wrist_v1.stl",
+      "mesh_relative": "motor_holder_so101_wrist_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.0648499 -0.032 0.018",
+      "origin_rpy": "-3.14159 -2.55351e-15 -1.83387e-30"
+    },
+    {
+      "link": "lower_arm_link",
+      "collision_index": 2,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_v1.stl",
+      "mesh_relative": "sts3215_03a_v1.stl",
+      "scale": null,
+      "origin_xyz": "-0.1224 0.0052 0.0187",
+      "origin_rpy": "-3.14159 -7.88861e-31 -3.14159"
+    },
+    {
+      "link": "wrist_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_no_horn_v1.stl",
+      "mesh_relative": "sts3215_03a_no_horn_v1.stl",
+      "scale": null,
+      "origin_xyz": "8.32667e-17 -0.0424 0.0306",
+      "origin_rpy": "1.5708 1.5708 0"
+    },
+    {
+      "link": "wrist_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/wrist_roll_pitch_so101_v2.stl",
+      "mesh_relative": "wrist_roll_pitch_so101_v2.stl",
+      "scale": null,
+      "origin_xyz": "0 -0.028 0.0181",
+      "origin_rpy": "-1.5708 -1.5708 0"
+    },
+    {
+      "link": "gripper_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/sts3215_03a_v1.stl",
+      "mesh_relative": "sts3215_03a_v1.stl",
+      "scale": null,
+      "origin_xyz": "0.0077 0.0001 -0.0234",
+      "origin_rpy": "-1.5708 -5.19179e-17 -1.66533e-16"
+    },
+    {
+      "link": "gripper_link",
+      "collision_index": 1,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/wrist_roll_follower_so101_v1.stl",
+      "mesh_relative": "wrist_roll_follower_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "8.32667e-17 -0.000218214 0.000949706",
+      "origin_rpy": "-3.14159 -5.55112e-17 0"
+    },
+    {
+      "link": "gripper_camera_mount_link",
+      "collision_index": 0,
+      "collision_name": "gripper_camera_mount_collision",
+      "mesh_uri": "package://so101_description/meshes/gripper_camera_mount.stl",
+      "mesh_relative": "gripper_camera_mount.stl",
+      "scale": "0.001 0.001 0.001",
+      "origin_xyz": "0 0 0",
+      "origin_rpy": "0 0 0"
+    },
+    {
+      "link": "moving_jaw_so101_v1_link",
+      "collision_index": 0,
+      "collision_name": null,
+      "mesh_uri": "package://so101_description/meshes/moving_jaw_so101_v1.stl",
+      "mesh_relative": "moving_jaw_so101_v1.stl",
+      "scale": null,
+      "origin_xyz": "-5.55112e-17 -5.55112e-17 0.0189",
+      "origin_rpy": "9.53145e-17 6.93889e-18 1.24077e-24"
+    }
+  ]
+}

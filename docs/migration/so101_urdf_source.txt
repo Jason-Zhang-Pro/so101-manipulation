@@ -1,0 +1,5 @@
+Source: /media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/so101_new_calib.urdf
+Destination: /media/tiger/New Volume/ubuntufile/capstone/ros2_ws/src/so101_description/urdf/so101.urdf
+
+7a4dc0359d8919128b1eef89d4e35f85ba40ad7ad7a423a232e7ad0e1976d079  /media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/so101_new_calib.urdf
+7a4dc0359d8919128b1eef89d4e35f85ba40ad7ad7a423a232e7ad0e1976d079  ros2_ws/src/so101_description/urdf/so101.urdf

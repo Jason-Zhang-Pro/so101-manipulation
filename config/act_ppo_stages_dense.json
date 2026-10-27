@@ -1,0 +1,29 @@
+{
+  "stage_schema_version": 1,
+  "calibration_status": "candidate_unvalidated",
+  "s0_budget_s": 5.0,
+  "s0_home_hold_s": 3.0,
+  "s1_budget_s": 10.0,
+  "s1_reach_distance_m": 0.02,
+  "s1_reach_xy_m": 0.01,
+  "s1_reach_dz_min_m": 0.0,
+  "s1_reach_dz_max_m": 0.02,
+  "s1_orientation_tolerance_rad": 0.3490658503988659,
+  "s1_opening_min_rad": 0.45,
+  "s1_opening_max_rad": 0.9,
+  "s1_reach_hold_s": 0.15,
+  "process_reward": {
+    "schema_version": 1,
+    "s1_distance_coarse_scale_m": 0.1,
+    "s1_distance_fine_scale_m": 0.02,
+    "s1_xy_scale_m": 0.03,
+    "s1_height_scale_m": 0.02,
+    "s1_orientation_scale_rad": 0.35,
+    "s1_opening_scale_rad": 0.2,
+    "s1_soft_gate_floor": 0.25,
+    "s1_potential_weights": [20, 20, 15, 10, 5, 5, 10, 10, 5],
+    "s1_time_cost_per_s": 0.03,
+    "s1_remaining_cost_per_s": 0.3,
+    "s1_success_bonus": 10.0
+  }
+}

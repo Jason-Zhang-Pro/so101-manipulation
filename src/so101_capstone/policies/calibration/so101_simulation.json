@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "robot_type": "so101_follower",
+  "environment": "gazebo_fortress",
+  "description": "Measured stable single-joint ranges for the Capstone SO-101 Gazebo simulation. These values are separate from the real LeRobot motor calibration.",
+  "joint_order": [
+    "shoulder_pan",
+    "shoulder_lift",
+    "elbow_flex",
+    "wrist_flex",
+    "wrist_roll",
+    "gripper"
+  ],
+  "joints": {
+    "shoulder_pan": {
+      "policy_min": -100.0,
+      "policy_max": 100.0,
+      "range_min_deg": -109.754,
+      "range_max_deg": 109.754,
+      "range_min_rad": -1.9155686672338563,
+      "range_max_rad": 1.9155686672338563
+    },
+    "shoulder_lift": {
+      "policy_min": -100.0,
+      "policy_max": 100.0,
+      "range_min_deg": -99.931,
+      "range_max_deg": 100.0,
+      "range_min_rad": -1.7441249748104535,
+      "range_max_rad": 1.7453292519943295
+    },
+    "elbow_flex": {
+      "policy_min": -100.0,
+      "policy_max": 100.0,
+      "range_min_deg": -96.733,
+      "range_max_deg": 96.733,
+      "range_min_rad": -1.6883093453316749,
+      "range_max_rad": 1.6883093453316749
+    },
+    "wrist_flex": {
+      "policy_min": -100.0,
+      "policy_max": 100.0,
+      "range_min_deg": -94.754,
+      "range_max_deg": 94.754,
+      "range_min_rad": -1.653769279434707,
+      "range_max_rad": 1.653769279434707
+    },
+    "wrist_roll": {
+      "policy_min": -100.0,
+      "policy_max": 100.0,
+      "range_min_deg": -157.096,
+      "range_max_deg": 162.648,
+      "range_min_rad": -2.741842441713012,
+      "range_max_rad": 2.838743121783737
+    },
+    "gripper": {
+      "policy_min": 0.0,
+      "policy_max": 100.0,
+      "range_min_deg": -9.933,
+      "range_max_deg": 99.931,
+      "range_min_rad": -0.17336355460059674,
+      "range_max_rad": 1.7441249748104535
+    }
+  }
+}

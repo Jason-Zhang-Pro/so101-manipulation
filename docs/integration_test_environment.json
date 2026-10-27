@@ -1,0 +1,17 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "torch": "2.7.1",
+    "torchvision": "0.22.1",
+    "numpy": "2.5.4",
+    "pytest": "9.1.1",
+    "draccus": "0.10.0",
+    "safetensors": "0.8.0",
+    "tensorboard": "2.21.0",
+    "diffusers": "0.39.0",
+    "huggingface-hub": "1.25.1",
+    "datasets": "3.6.0",
+    "av": "19.0.2",
+    "opencv-python-headless": "5.0.0.93"
+  }
+}

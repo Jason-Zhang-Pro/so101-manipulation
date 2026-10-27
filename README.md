@@ -1,5 +1,11 @@
 # SO-101 Learning-Based Manipulation
 
+**本地整合版本：** 本仓库现已纳入 ACT 毕设分支的训练监测及
+Capstone S0–S5 ACT-PPO 源码，共用根目录 `lerobot/`。
+运行时必须显式选择 `primary` 或 `capstone_ppo` 配置，保留各自的标定、频率与 ROS 工作区。
+整合与使用说明见 [中文整合指南](docs/integration_zh.md)。
+以下历史结果与能力边界仍按原实验解释；整合本身不构成新的训练或实机验证。
+
 A low-cost robot manipulation project combining real-robot ACT imitation learning,
 ROS 2 / Gazebo simulation, visual grasping, and reinforcement-learning groundwork.
 
@@ -63,6 +69,11 @@ See [experiment evidence](docs/experiments.md) for sample-size and provenance no
 | `tools/` | Calibration, scene reset and real-to-sim pose tools |
 | `assets/` | Reproducible result and system figures |
 | `docs/` | Setup, evidence, source inventory and release review |
+| `lerobot/` | Shared customized LeRobot: bounded ACT, accumulation and latent telemetry |
+| `src/so101_capstone/` | Imported staged ACT-PPO, rewards, adapters and evaluation |
+| `ros2_ws/` | Separate Capstone PPO simulation profile and Gazebo plugins |
+| `config/` | Preserved Capstone stage/reward configurations |
+| `tests/` | Imported regressions plus integration contract checks |
 
 The PPO reach baseline is a separate experiment, not an implementation of ACT
 warm-start PPO grasp refinement. The original machine-specific launcher was
@@ -107,7 +118,9 @@ ACT and PPO use
 existing learning libraries; robot/MoveIt assets include upstream or generated
 material. See [third-party notices](THIRD_PARTY_NOTICES.md).
 
-Robot mesh binaries are excluded from Git publication and must be obtained
-separately for simulation. The [LeRobot reproduction guide](docs/lerobot_reproduction.md)
-includes the local source patch and its verification limits. No open-source license is
+The original `ros/` profile requires external robot meshes. The imported
+`ros2_ws/` profile retains its own mesh assets; these do not certify compatibility
+with the original profile. The [LeRobot reproduction guide](docs/lerobot_reproduction.md)
+records the historical source patch; the integrated `lerobot/` already contains
+the selected modifications and must not have that patch applied again. No open-source license is
 asserted for the entire collection at this stage.

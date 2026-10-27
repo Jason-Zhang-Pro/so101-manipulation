@@ -1,0 +1,528 @@
+diff --git a/src/lerobot/cameras/utils.py b/src/lerobot/cameras/utils.py
+index 1eb69840..145e40b2 100644
+--- a/src/lerobot/cameras/utils.py
++++ b/src/lerobot/cameras/utils.py
+@@ -60,6 +60,7 @@ def get_cv2_backend() -> int:
+     import cv2
+ 
+     if platform.system() == "Windows":
++        return cv2.CAP_DSHOW
+         return cv2.CAP_MSMF  # Use MSMF for Windows instead of AVFOUNDATION
+     # elif platform.system() == "Darwin":  # macOS
+     #     return cv2.CAP_AVFOUNDATION
+diff --git a/src/lerobot/configs/policies.py b/src/lerobot/configs/policies.py
+index f5fa727c..542bac35 100644
+--- a/src/lerobot/configs/policies.py
++++ b/src/lerobot/configs/policies.py
+@@ -12,14 +12,13 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ import abc
+-import builtins
+ import json
+ import logging
+ import os
+ import tempfile
+ from dataclasses import dataclass, field
+ from pathlib import Path
+-from typing import TypeVar
++from typing import Type, TypeVar
+ 
+ import draccus
+ from huggingface_hub import hf_hub_download
+@@ -27,12 +26,12 @@ from huggingface_hub.constants import CONFIG_NAME
+ from huggingface_hub.errors import HfHubHTTPError
+ 
+ from lerobot.configs.types import FeatureType, NormalizationMode, PolicyFeature
+-from lerobot.constants import ACTION, OBS_STATE
+ from lerobot.optim.optimizers import OptimizerConfig
+ from lerobot.optim.schedulers import LRSchedulerConfig
+ from lerobot.utils.hub import HubMixin
+ from lerobot.utils.utils import auto_select_torch_device, is_amp_available, is_torch_device_available
+ 
++# Generic variable that is either PreTrainedConfig or a subclass thereof
+ T = TypeVar("T", bound="PreTrainedConfig")
+ 
+ 
+@@ -63,6 +62,9 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+     # automatic gradient scaling is used.
+     use_amp: bool = False
+ 
++    # added by Sachin-2007
++    gradient_accumulation_steps: int = 1
++
+     push_to_hub: bool = True
+     repo_id: str | None = None
+ 
+@@ -120,8 +122,8 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @property
+     def robot_state_feature(self) -> PolicyFeature | None:
+-        for ft_name, ft in self.input_features.items():
+-            if ft.type is FeatureType.STATE and ft_name == OBS_STATE:
++        for _, ft in self.input_features.items():
++            if ft.type is FeatureType.STATE:
+                 return ft
+         return None
+ 
+@@ -138,8 +140,8 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @property
+     def action_feature(self) -> PolicyFeature | None:
+-        for ft_name, ft in self.output_features.items():
+-            if ft.type is FeatureType.ACTION and ft_name == ACTION:
++        for _, ft in self.output_features.items():
++            if ft.type is FeatureType.ACTION:
+                 return ft
+         return None
+ 
+@@ -149,17 +151,17 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+ 
+     @classmethod
+     def from_pretrained(
+-        cls: builtins.type[T],
+-        pretrained_name_or_path: str | Path,
+-        *,
+-        force_download: bool = False,
+-        resume_download: bool = None,
+-        proxies: dict | None = None,
+-        token: str | bool | None = None,
+-        cache_dir: str | Path | None = None,
+-        local_files_only: bool = False,
+-        revision: str | None = None,
+-        **policy_kwargs,
++            cls: Type[T],
++            pretrained_name_or_path: str | Path,
++            *,
++            force_download: bool = False,
++            resume_download: bool = None,
++            proxies: dict | None = None,
++            token: str | bool | None = None,
++            cache_dir: str | Path | None = None,
++            local_files_only: bool = False,
++            revision: str | None = None,
++            **policy_kwargs,
+     ) -> T:
+         model_id = str(pretrained_name_or_path)
+         config_file: str | None = None
+@@ -197,11 +199,16 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+             config = json.load(f)
+ 
+         config.pop("type")
+-        with tempfile.NamedTemporaryFile("w+") as f:
++
++        # Create temporary file and ensure it's closed before draccus reads it (Windows fix)
++        with tempfile.NamedTemporaryFile("w+", delete=False) as f:
+             json.dump(config, f)
+-            config_file = f.name
+-            f.flush()
++            temp_config_file = f.name
+ 
++        try:
+             cli_overrides = policy_kwargs.pop("cli_overrides", [])
+             with draccus.config_type("json"):
+-                return draccus.parse(orig_config.__class__, config_file, args=cli_overrides)
++                return draccus.parse(orig_config.__class__, temp_config_file, args=cli_overrides)
++        finally:
++            # Clean up the temporary file
++            os.unlink(temp_config_file)
+\ No newline at end of file
+diff --git a/src/lerobot/motors/motors_bus.py b/src/lerobot/motors/motors_bus.py
+index 97830fc3..bc28b53f 100644
+--- a/src/lerobot/motors/motors_bus.py
++++ b/src/lerobot/motors/motors_bus.py
+@@ -1056,7 +1056,7 @@ class MotorsBus(abc.ABC):
+         motors: str | list[str] | None = None,
+         *,
+         normalize: bool = True,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+     ) -> dict[str, Value]:
+         """Read the same register from several motors at once.
+ 
+@@ -1104,7 +1104,7 @@ class MotorsBus(abc.ABC):
+         length: int,
+         motor_ids: list[int],
+         *,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+         raise_on_error: bool = True,
+         err_msg: str = "",
+     ) -> tuple[dict[int, int], int]:
+@@ -1113,7 +1113,7 @@ class MotorsBus(abc.ABC):
+             comm = self.sync_reader.txRxPacket()
+             if self._is_comm_success(comm):
+                 break
+-            logger.debug(
++            logger.info(
+                 f"Failed to sync read @{addr=} ({length=}) on {motor_ids=} ({n_try=}): "
+                 + self.packet_handler.getTxRxResult(comm)
+             )
+@@ -1151,7 +1151,7 @@ class MotorsBus(abc.ABC):
+         values: Value | dict[str, Value],
+         *,
+         normalize: bool = True,
+-        num_retry: int = 0,
++        num_retry: int = 1,
+     ) -> None:
+         """Write the same register on multiple motors.
+ 
+@@ -1192,7 +1192,7 @@ class MotorsBus(abc.ABC):
+         addr: int,
+         length: int,
+         ids_values: dict[int, int],
+-        num_retry: int = 0,
++        num_retry: int = 1,
+         raise_on_error: bool = True,
+         err_msg: str = "",
+     ) -> int:
+@@ -1201,7 +1201,7 @@ class MotorsBus(abc.ABC):
+             comm = self.sync_writer.txPacket()
+             if self._is_comm_success(comm):
+                 break
+-            logger.debug(
++            logger.info(
+                 f"Failed to sync write @{addr=} ({length=}) with {ids_values=} ({n_try=}): "
+                 + self.packet_handler.getTxRxResult(comm)
+             )
+diff --git a/src/lerobot/policies/act/configuration_act.py b/src/lerobot/policies/act/configuration_act.py
+index 6f6c1c4b..245d1378 100644
+--- a/src/lerobot/policies/act/configuration_act.py
++++ b/src/lerobot/policies/act/configuration_act.py
+@@ -13,6 +13,7 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
++import math
+ from dataclasses import dataclass, field
+ 
+ from lerobot.configs.policies import PreTrainedConfig
+@@ -128,6 +129,12 @@ class ACTConfig(PreTrainedConfig):
+     # Note: the value used in ACT when temporal ensembling is enabled is 0.01.
+     temporal_ensemble_coeff: float | None = None
+ 
++    # Optional differentiable limits in the unnormalized action coordinates.
++    # Historical checkpoints omit these fields and retain their original outputs.
++    action_bounds_lower: list[float] | None = None
++    action_bounds_upper: list[float] | None = None
++    action_bound_softness: float = 0.02
++
+     # Training and loss computation.
+     dropout: float = 0.1
+     kl_weight: float = 10.0
+@@ -159,6 +166,24 @@ class ACTConfig(PreTrainedConfig):
+             raise ValueError(
+                 f"Multiple observation steps not handled yet. Got `nobs_steps={self.n_obs_steps}`"
+             )
++        self.validate_action_bounds()
++
++    def validate_action_bounds(self) -> None:
++        """Validate optional limits, also after dataset features are attached."""
++        if not math.isfinite(self.action_bound_softness) or not 0 < self.action_bound_softness < 1:
++            raise ValueError("`action_bound_softness` must be finite and between 0 and 1.")
++        lower, upper = self.action_bounds_lower, self.action_bounds_upper
++        if (lower is None) != (upper is None):
++            raise ValueError("`action_bounds_lower` and `action_bounds_upper` must be supplied together.")
++        if lower is None:
++            return
++        if not lower or len(lower) != len(upper):
++            raise ValueError("Action bounds must be nonempty lists of the same length.")
++        if any(not math.isfinite(lo) or not math.isfinite(hi) or lo >= hi for lo, hi in zip(lower, upper)):
++            raise ValueError("Action bounds must be finite and strictly increasing in every dimension.")
++        action_feature = self.action_feature
++        if action_feature is not None and tuple(action_feature.shape) != (len(lower),):
++            raise ValueError("Action bounds must have one entry per output action dimension.")
+ 
+     def get_optimizer_preset(self) -> AdamWConfig:
+         return AdamWConfig(
+@@ -172,6 +197,7 @@ class ACTConfig(PreTrainedConfig):
+     def validate_features(self) -> None:
+         if not self.image_features and not self.env_state_feature:
+             raise ValueError("You must provide at least one image or the environment state among the inputs.")
++        self.validate_action_bounds()
+ 
+     @property
+     def observation_delta_indices(self) -> None:
+diff --git a/src/lerobot/policies/act/modeling_act.py b/src/lerobot/policies/act/modeling_act.py
+index cfd549b2..916405c7 100644
+--- a/src/lerobot/policies/act/modeling_act.py
++++ b/src/lerobot/policies/act/modeling_act.py
+@@ -34,6 +34,7 @@ from torchvision.models._utils import IntermediateLayerGetter
+ from torchvision.ops.misc import FrozenBatchNorm2d
+ 
+ from lerobot.constants import ACTION, OBS_IMAGES
++from lerobot.policies.act.bounded_actions import bound_action_means, clamp_action_mean_roundoff
+ from lerobot.policies.act.configuration_act import ACTConfig
+ from lerobot.policies.normalize import Normalize, Unnormalize
+ from lerobot.policies.pretrained import PreTrainedPolicy
+@@ -120,7 +121,7 @@ class ACTPolicy(PreTrainedPolicy):
+         if self.config.temporal_ensemble_coeff is not None:
+             actions = self.predict_action_chunk(batch)
+             action = self.temporal_ensembler.update(actions)
+-            return action
++            return clamp_action_mean_roundoff(action, self.config)
+ 
+         # Action queue logic for n_action_steps > 1. When the action_queue is depleted, populate it by
+         # querying the policy.
+@@ -144,7 +145,11 @@ class ACTPolicy(PreTrainedPolicy):
+ 
+         actions = self.model(batch)[0]
+         actions = self.unnormalize_outputs({ACTION: actions})[ACTION]
+-        return actions
++        return self.bound_action_means(actions)
++
++    def bound_action_means(self, actions: Tensor) -> Tensor:
++        """Apply this checkpoint's optional physical bounds before queueing or TE."""
++        return bound_action_means(actions, self.config)
+ 
+     def forward(self, batch: dict[str, Tensor]) -> tuple[Tensor, dict]:
+         """Run the batch through the model and compute the loss for training or validation."""
+@@ -156,6 +161,17 @@ class ACTPolicy(PreTrainedPolicy):
+         batch = self.normalize_targets(batch)
+         actions_hat, (mu_hat, log_sigma_x2_hat) = self.model(batch)
+ 
++        if self.config.action_bounds_lower is not None:
++            # Prediction normalization must retain gradients. These are the
++            # exact normalization implementations used at inference and for BC
++            # targets, explicitly bypassing their torch.no_grad decorators.
++            physical_actions = Unnormalize.forward.__wrapped__(
++                self.unnormalize_outputs, {ACTION: actions_hat}
++            )[ACTION]
++            actions_hat = Normalize.forward.__wrapped__(
++                self.normalize_targets, {ACTION: self.bound_action_means(physical_actions)}
++            )[ACTION]
++
+         l1_loss = (
+             F.l1_loss(batch[ACTION], actions_hat, reduction="none") * ~batch["action_is_pad"].unsqueeze(-1)
+         ).mean()
+diff --git a/src/lerobot/scripts/train.py b/src/lerobot/scripts/train.py
+index 235352cd..2c042b0c 100644
+--- a/src/lerobot/scripts/train.py
++++ b/src/lerobot/scripts/train.py
+@@ -17,7 +17,7 @@ import logging
+ import time
+ from contextlib import nullcontext
+ from pprint import pformat
+-from typing import Any
++from typing import Any, Iterator
+ 
+ import torch
+ from termcolor import colored
+@@ -63,14 +63,60 @@ def update_policy(
+     lr_scheduler=None,
+     use_amp: bool = False,
+     lock=None,
++    gradient_accumulation_steps: int = 1,
++    batch_iterator: Iterator[Any] | None = None,
+ ) -> tuple[MetricsTracker, dict]:
++    """Perform one optimizer update over one or more microbatches.
++
++    Training/checkpoint steps count optimizer updates. Mean microbatch losses
++    are weighted by sample count, including a short DataLoader tail batch.
++    """
++    if (
++        isinstance(gradient_accumulation_steps, bool)
++        or not isinstance(gradient_accumulation_steps, int)
++        or gradient_accumulation_steps < 1
++    ):
++        raise ValueError("gradient_accumulation_steps must be a positive integer.")
++    if gradient_accumulation_steps > 1 and batch_iterator is None:
++        raise ValueError("Gradient accumulation requires a batch iterator.")
+     start_time = time.perf_counter()
+     device = get_device_from_parameters(policy)
+     policy.train()
+-    with torch.autocast(device_type=device.type) if use_amp else nullcontext():
+-        loss, output_dict = policy.forward(batch)
+-        # TODO(rcadene): policy.unnormalize_outputs(out_dict)
+-    grad_scaler.scale(loss).backward()
++    optimizer.zero_grad()
++    # Keep pending batches on their loader device (normally CPU); move only
++    # the current microbatch to the policy device to bound accelerator memory.
++    batches = [batch]
++    if gradient_accumulation_steps > 1:
++        batches.extend(next(batch_iterator) for _ in range(gradient_accumulation_steps - 1))
++    batch_sizes = []
++    for microbatch in batches:
++        sizes = [value.shape[0] for value in microbatch.values()
++                 if isinstance(value, torch.Tensor) and value.ndim > 0]
++        if not sizes or sizes[0] < 1 or any(size != sizes[0] for size in sizes):
++            raise ValueError("Microbatch tensors must share a positive batch dimension.")
++        batch_sizes.append(sizes[0])
++    total_samples = sum(batch_sizes)
++    mean_loss = 0.0
++    metric_sums = {}
++    for batch, batch_size in zip(batches, batch_sizes, strict=True):
++        weight = batch_size / total_samples
++        batch = {
++            key: value.to(device, non_blocking=device.type == "cuda")
++            if isinstance(value, torch.Tensor) else value
++            for key, value in batch.items()
++        }
++        with torch.autocast(device_type=device.type) if use_amp else nullcontext():
++            loss, output_dict = policy.forward(batch)
++        mean_loss += loss.detach().item() * weight
++        if output_dict:
++            for key, value in output_dict.items():
++                if isinstance(value, (int, float)):
++                    metric_sums[key] = metric_sums.get(key, 0.0) + weight * value
++                elif isinstance(value, torch.Tensor) and value.numel() == 1:
++                    metric_sums[key] = metric_sums.get(key, 0.0) + weight * value.detach().item()
++        grad_scaler.scale(loss * weight).backward()
++    if output_dict:
++        output_dict = {**output_dict, **metric_sums}
+ 
+     # Unscale the gradient of the optimizer's assigned params in-place **prior to gradient clipping**.
+     grad_scaler.unscale_(optimizer)
+@@ -98,7 +144,7 @@ def update_policy(
+         # To possibly update an internal buffer (for instance an Exponential Moving Average like in TDMPC).
+         policy.update()
+ 
+-    train_metrics.loss = loss.item()
++    train_metrics.loss = mean_loss
+     train_metrics.grad_norm = grad_norm.item()
+     train_metrics.lr = optimizer.param_groups[0]["lr"]
+     train_metrics.update_s = time.perf_counter() - start_time
+@@ -108,6 +154,13 @@ def update_policy(
+ @parser.wrap()
+ def train(cfg: TrainPipelineConfig):
+     cfg.validate()
++    accumulation_steps = getattr(cfg.policy, "gradient_accumulation_steps", 1)
++    if (
++        isinstance(accumulation_steps, bool)
++        or not isinstance(accumulation_steps, int)
++        or accumulation_steps < 1
++    ):
++        raise ValueError("gradient_accumulation_steps must be a positive integer.")
+     logging.info(pformat(cfg.to_dict()))
+ 
+     if cfg.wandb.enable and cfg.wandb.project:
+@@ -196,7 +249,11 @@ def train(cfg: TrainPipelineConfig):
+     }
+ 
+     train_tracker = MetricsTracker(
+-        cfg.batch_size, dataset.num_frames, dataset.num_episodes, train_metrics, initial_step=step
++        cfg.batch_size * accumulation_steps,
++        dataset.num_frames,
++        dataset.num_episodes,
++        train_metrics,
++        initial_step=step,
+     )
+ 
+     logging.info("Start offline training on a fixed dataset")
+@@ -205,10 +262,6 @@ def train(cfg: TrainPipelineConfig):
+         batch = next(dl_iter)
+         train_tracker.dataloading_s = time.perf_counter() - start_time
+ 
+-        for key in batch:
+-            if isinstance(batch[key], torch.Tensor):
+-                batch[key] = batch[key].to(device, non_blocking=device.type == "cuda")
+-
+         train_tracker, output_dict = update_policy(
+             train_tracker,
+             policy,
+@@ -218,6 +271,8 @@ def train(cfg: TrainPipelineConfig):
+             grad_scaler=grad_scaler,
+             lr_scheduler=lr_scheduler,
+             use_amp=cfg.policy.use_amp,
++            gradient_accumulation_steps=accumulation_steps,
++            batch_iterator=dl_iter,
+         )
+ 
+         # Note: eval and checkpoint happens *after* the `step`th training update has completed, so we
+diff --git a/src/lerobot/utils/logging_utils.py b/src/lerobot/utils/logging_utils.py
+index b6404e66..cf2bea80 100644
+--- a/src/lerobot/utils/logging_utils.py
++++ b/src/lerobot/utils/logging_utils.py
+@@ -134,7 +134,7 @@ class MetricsTracker:
+ 
+     def __str__(self) -> str:
+         display_list = [
+-            f"step:{format_big_number(self.steps)}",
++            f"step:{self.steps}",
+             # number of samples seen during training
+             f"smpl:{format_big_number(self.samples)}",
+             # number of episodes seen during training
+diff --git a/src/lerobot/policies/act/bounded_actions.py b/src/lerobot/policies/act/bounded_actions.py
+new file mode 100755
+index 0000000..862b373
+--- /dev/null
++++ b/src/lerobot/policies/act/bounded_actions.py
+@@ -0,0 +1,78 @@
++"""Checkpoint-controlled, differentiable bounds for ACT action predictions."""
++
++from __future__ import annotations
++
++import math
++
++import torch
++from torch import Tensor
++
++from lerobot.policies.act.configuration_act import ACTConfig
++
++
++def _validated_limits(actions: Tensor, config: ACTConfig) -> tuple[list[float], list[float]] | None:
++    """Also accept small policy config objects used by offline actor tests."""
++    lower = getattr(config, "action_bounds_lower", None)
++    upper = getattr(config, "action_bounds_upper", None)
++    if lower is None and upper is None:
++        return None
++    if lower is None or upper is None:
++        raise ValueError("Both ACT action bounds must be supplied together.")
++    if not lower or len(lower) != len(upper):
++        raise ValueError("ACT action bounds must be nonempty and have the same length.")
++    if any(not math.isfinite(lo) or not math.isfinite(hi) or lo >= hi for lo, hi in zip(lower, upper)):
++        raise ValueError("ACT action bounds must be finite and strictly increasing.")
++    softness = float(getattr(config, "action_bound_softness", 0.02))
++    if not math.isfinite(softness) or not 0 < softness < 1:
++        raise ValueError("ACT action bound softness must be finite and between 0 and 1.")
++    if not actions.is_floating_point() or actions.ndim < 1:
++        raise ValueError("Bounded ACT actions must be a floating point tensor with an action dimension.")
++    if actions.shape[-1] != len(lower):
++        raise ValueError("ACT action dimension does not match the configured action bounds.")
++    if not bool(torch.isfinite(actions).all()):
++        raise ValueError("Bounded ACT actions must be finite.")
++    return lower, upper
++
++
++def clamp_action_mean_roundoff(actions: Tensor, config: ACTConfig) -> Tensor:
++    """Guard arithmetic roundoff after averaging already-bounded action chunks.
++
++    This is deliberately separate from the soft bound, which must only be
++    applied once to each raw ACT prediction. Legacy checkpoint actions pass
++    through unchanged.
++    """
++    limits = _validated_limits(actions, config)
++    if limits is None:
++        return actions
++    lower, upper = (torch.as_tensor(values, device=actions.device, dtype=actions.dtype) for values in limits)
++    return torch.maximum(torch.minimum(actions, upper), lower)
++
++
++def bound_action_means(actions: Tensor, config: ACTConfig) -> Tensor:
++    """Bound physical action predictions while preserving the interior exactly.
++
++    In affine [-1, 1] coordinates the central ``1 - softness`` region is the
++    identity. Outside it a C1 rational tail approaches the limit, with a nonzero
++    analytic derivative at every finite input. Unlike clamping a network output,
++    this leaves an inward gradient when a historical network predicts > 100.
++    Bounds are opt-in so historical checkpoint inference is unchanged.
++    """
++    limits = _validated_limits(actions, config)
++    if limits is None:
++        return actions
++
++    # Compute the small tail correction in float64. Preserve the input dtype and
++    # the original interior values, including their exact floating point bits.
++    lower, upper = (torch.as_tensor(values, device=actions.device, dtype=torch.float64) for values in limits)
++    center = lower / 2 + upper / 2
++    half_range = upper / 2 - lower / 2
++    normalized = (actions.to(torch.float64) - center) / half_range
++    softness = float(getattr(config, "action_bound_softness", 0.02))
++    excess = (normalized.abs() - (1 - softness)).clamp_min(0)
++    # Equivalent to 1-s + s*d/(s+d), without a potentially overflowing s*d.
++    tail = normalized.sign() * (1 - softness * (softness / (softness + excess)))
++    bounded = (center + half_range * tail).to(actions.dtype)
++    # This only guards arithmetic roundoff after conversion; it never clamps the
++    # raw network prediction or removes the tail's gradient at ordinary inputs.
++    bounded = torch.maximum(torch.minimum(bounded, upper.to(actions.dtype)), lower.to(actions.dtype))
++    return torch.where(normalized.abs() <= 1 - softness, actions, bounded)

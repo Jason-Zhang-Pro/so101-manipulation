@@ -1,0 +1,155 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="empty">
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="gz::sim::systems::Physics"/>
+
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="gz::sim::systems::UserCommands"/>
+
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster"/>
+
+    <plugin
+      filename="ignition-gazebo-contact-system"
+      name="gz::sim::systems::Contact"/>
+
+    <!-- Timestamped per-physics-step evidence, including empty contacts. -->
+    <plugin
+      filename="so101-contact-evidence-system"
+      name="so101::gazebo::ContactEvidenceSystem"/>
+
+    <!-- Dormant until a confirmed-grasp request; modifies only a detachable joint. -->
+    <plugin
+      filename="so101-grasp-attachment-system"
+      name="so101::gazebo::GraspAttachmentSystem"/>
+
+    <!-- Required for camera / depth / lidar sensors -->
+    <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Uniform ambient-only laboratory lighting -->
+    <scene>
+      <ambient>0.27 0.27 0.27 1</ambient>
+      <background>0.42 0.46 0.50 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+
+    <!-- Ground plane -->
+    <!-- Shadowless fill lighting for even daylight-like illumination -->
+    <light type="point" name="fill_light_front_left">
+      <pose>-0.50 0.85 2.50 0 0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <diffuse>0.225 0.225 0.225 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>1.00</constant>
+        <linear>0.10</linear>
+        <quadratic>0.025</quadratic>
+      </attenuation>
+    </light>
+
+    <light type="point" name="fill_light_front_right">
+      <pose>-0.50 -0.85 2.50 0 0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <diffuse>0.225 0.225 0.225 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>1.00</constant>
+        <linear>0.10</linear>
+        <quadratic>0.025</quadratic>
+      </attenuation>
+    </light>
+
+    <light type="point" name="fill_light_back_left">
+      <pose>1.10 0.85 2.50 0 0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <diffuse>0.225 0.225 0.225 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>1.00</constant>
+        <linear>0.10</linear>
+        <quadratic>0.025</quadratic>
+      </attenuation>
+    </light>
+
+    <light type="point" name="fill_light_back_right">
+      <pose>1.10 -0.85 2.50 0 0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <diffuse>0.225 0.225 0.225 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>1.00</constant>
+        <linear>0.10</linear>
+        <quadratic>0.025</quadratic>
+      </attenuation>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+
+      <!--
+        Give the ground a semantic label so segmentation output
+        is not treated entirely as unlabeled background.
+      -->
+      <plugin
+        filename="ignition-gazebo-label-system"
+        name="ignition::gazebo::systems::Label">
+        <label>1</label>
+      </plugin>
+
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.20 0.24 0.28 1</ambient>
+            <diffuse>0.20 0.24 0.28 1</diffuse>
+            <specular>0.02 0.02 0.02 1</specular>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <!-- Static laboratory table -->
+    <include>
+      <uri>model://lab_table</uri>
+      <name>lab_table</name>
+      <pose>0.278 0.05 0 0 0 1.570796</pose>
+    </include>
+
+  </world>
+</sdf>

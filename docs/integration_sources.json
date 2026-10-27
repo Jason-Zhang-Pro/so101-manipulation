@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "repository": "Jason-Zhang-Pro/so101-manipulation",
+      "branch": "main",
+      "commit": "ae53f6c24bb0bb651b1f43222c5ab1b1f168ee78"
+    },
+    {
+      "repository": "czhengxi151-pixel/lerobot",
+      "branch": "thesis-act-so101",
+      "commit": "7bb07f64ec7dc908c29150a1c0d1e3f30d9c483b"
+    },
+    {
+      "repository": "yaogepinicheng/so101-capstone",
+      "branch": "main",
+      "commit": "8caceab6f879616c6e2db75053a00dc37a5fcd7d"
+    }
+  ],
+  "shared_lerobot_base": "882c80d446a63a44868c67ae535467af32ce0e80"
+}

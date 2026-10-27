@@ -1,0 +1,230 @@
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/empty.sdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/setuptools/launch.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/torch/distributed/launch.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/torch/_inductor/runtime/static_triton_launcher.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/torch/testing/_internal/check_kernel_launches.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/triton/compiler/make_launcher.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/rl_env/lib/python3.10/site-packages/triton/profiler/hooks/launch.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Mini/Mini_SO_100_01g.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/4040_Base_Mount/stl/4040_base_mount.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Compliant_Gripper/stl/Compliant_Moving_Jaw_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Compliant_Gripper/stl/Compliant_Wrist_Roll_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Mount_Helper/stl/mount_helper v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/arm_base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_bottom.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_middle.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_top.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/arm_base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/cam_mount_bottom.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/cam_mount_top.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Raised_Base/Raised_Base_Extension.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Small_Handle/Small_Leader_Handle.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/SO101_Wrist_Cam_Hex-Nut_Mount_32x32_UVC_Module/stl/SO-ARM101_camera_wrist_mount.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Springy_Trigger/Springy_Trigger.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_32x32_UVC_Module/stl/Wrist_Cam_Mount_32x32_UVC_Module_SO100.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_32x32_UVC_Module/stl/Wrist_Cam_Mount_32x32_UVC_Module_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D405/Wrist_Roll_D405_Holder.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D435/stl/D435_Vinmooog_adapter.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D435/stl/Wrist_cam_mount_RealSense_D435.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_Vinmooog_Webcam/stl/Updated_Wrist_Camera_Insert.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Mount_Vinmooog_Webcam/stl/Webcam_Mount_Wrist.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Optional/Wrist_Cam_Plug_Mount_32x32_UVC_Module/stl/SO-ARM100_Plug_camera.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Base_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Fixed_Jaw_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Fixed_Jaw.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Lower_Arm_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Lower_Arm.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Moving_Jaw.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Rotation_Pitch_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Rotation_Pitch.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Upper_Arm_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Upper_Arm.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Wrist_Pitch_Roll_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/assets/Wrist_Pitch_Roll.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO100/so100.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/base_motor_holder_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/base_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/motor_holder_so101_base_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/motor_holder_so101_wrist_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/moving_jaw_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/rotation_pitch_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/sts3215_03a_no_horn_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/sts3215_03a_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/under_arm_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/upper_arm_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/waveshare_mounting_plate_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/wrist_roll_follower_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/assets/wrist_roll_pitch_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/so101_new_calib.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/Simulation/SO101/so101_old_calib.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/Gauges/Gauge_0.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/Gauges/Gauge_tight_1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/Gauges/Lego_Size_Test_02_minuspoint1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/Gauges/Lego_Size_Test_02_zero.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_Ender.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_BambuLabA1Mini_part1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_BambuLabA1Mini_part2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-5.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Moving_Jaw_08d-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Rotation_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - WaveShare_Mounting_Plate_01d-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Wrist_Roll_08c-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Wrist_Roll_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-5.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Rotation_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Trigger_04e-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - WaveShare_Mounting_Plate_01d-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_05m_Leader_02ba-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_05m_Leader_02ba-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_Ender.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_BambuLabA1Mini_part1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_BambuLabA1Mini_part2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Follower/Ender_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Follower/Prusa_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Base_motor_holder_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Base_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Handle_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Motor_holder_SO101_Base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Motor_holder_SO101_Wrist.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Moving_Jaw_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Rotation_Pitch_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Seeedstudio_Mounting_Plate_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/SO101 Assembly.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Trigger_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Under_arm_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Upper_arm_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/WaveShare_Mounting_Plate_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Wrist_Roll_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Wrist_Roll_Pitch_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Individual/Wrist_Roll_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Leader/Ender_Leader_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models(original)/SO-ARM100/STL/SO101/Leader/Prusa_Leader_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Mini/Mini_SO_100_01g.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/4040_Base_Mount/stl/4040_base_mount.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Compliant_Gripper/stl/Compliant_Moving_Jaw_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Compliant_Gripper/stl/Compliant_Wrist_Roll_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Mount_Helper/stl/mount_helper v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/arm_base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_bottom.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_middle.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_32x32_UVC_Module/stl/cam_mount_top.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/arm_base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/cam_mount_bottom.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Overhead_Cam_Mount_Webcam/stl/cam_mount_top.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Raised_Base/Raised_Base_Extension.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Small_Handle/Small_Leader_Handle.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/SO101_Wrist_Cam_Hex-Nut_Mount_32x32_UVC_Module/stl/SO-ARM101_camera_wrist_mount.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Springy_Trigger/Springy_Trigger.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_32x32_UVC_Module/stl/Wrist_Cam_Mount_32x32_UVC_Module_SO100.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_32x32_UVC_Module/stl/Wrist_Cam_Mount_32x32_UVC_Module_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D405/Wrist_Roll_D405_Holder.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D435/stl/D435_Vinmooog_adapter.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_RealSense_D435/stl/Wrist_cam_mount_RealSense_D435.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_Vinmooog_Webcam/stl/Updated_Wrist_Camera_Insert.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Mount_Vinmooog_Webcam/stl/Webcam_Mount_Wrist.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Optional/Wrist_Cam_Plug_Mount_32x32_UVC_Module/stl/SO-ARM100_Plug_camera.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Base_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Fixed_Jaw_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Fixed_Jaw.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Lower_Arm_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Lower_Arm.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Moving_Jaw.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Rotation_Pitch_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Rotation_Pitch.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Upper_Arm_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Upper_Arm.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Wrist_Pitch_Roll_Motor.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/assets/Wrist_Pitch_Roll.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO100/so100.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/base_motor_holder_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/base_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/motor_holder_so101_base_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/motor_holder_so101_wrist_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/moving_jaw_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/rotation_pitch_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/sts3215_03a_no_horn_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/sts3215_03a_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/under_arm_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/upper_arm_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/waveshare_mounting_plate_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/wrist_roll_follower_so101_v1.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/assets/wrist_roll_pitch_so101_v2.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/so101_new_calib.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/Simulation/SO101/so101_old_calib.urdf
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/Gauges/Gauge_0.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/Gauges/Gauge_tight_1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/Gauges/Lego_Size_Test_02_minuspoint1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/Gauges/Lego_Size_Test_02_zero.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_Ender.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_BambuLabA1Mini_part1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_BambuLabA1Mini_part2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Base_08q-5.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Moving_Jaw_08d-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Rotation_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - WaveShare_Mounting_Plate_01d-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Wrist_Roll_08c-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Follower/Print_Follower_SO_ARM100_08k_UP_Prusa - Wrist_Roll_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Base_08q-5.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Rotation_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-3.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - SO_ARM100_08k-4.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Trigger_04e-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - WaveShare_Mounting_Plate_01d-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_05m_Leader_02ba-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_05m_Leader_02ba-2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Individual/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa - Wrist_Roll_Pitch_08i-1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_Ender.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_BambuLabA1Mini_part1.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_BambuLabA1Mini_part2.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO100/Leader/Print_Leader_SO_ARM100_08k_UP_Prusa.STL
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Follower/Ender_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Follower/Prusa_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Base_motor_holder_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Base_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Handle_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Motor_holder_SO101_Base.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Motor_holder_SO101_Wrist.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Moving_Jaw_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Rotation_Pitch_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Seeedstudio_Mounting_Plate_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/SO101 Assembly.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Trigger_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Under_arm_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Upper_arm_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/WaveShare_Mounting_Plate_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Wrist_Roll_Follower_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Wrist_Roll_Pitch_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Individual/Wrist_Roll_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Leader/Ender_Leader_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/robot_models/SO-ARM100/STL/SO101/Leader/Prusa_Leader_SO101.stl
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/src/so101_control/config/controllers.yaml
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/src/so101_control/launch/so101_control_gui.launch.py
+/media/tiger/New Volume/ubuntufile/old_cap_robot/cap_robot/src/so101_control/launch/so101_control.launch.py

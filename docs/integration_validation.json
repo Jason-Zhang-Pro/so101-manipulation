@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-27",
+  "core": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "102",
+    "time": "10.180",
+    "timestamp": "2026-10-27T14:19:29.687279+11:00"
+  },
+  "extended": {
+    "passed": 2671,
+    "failed": 89,
+    "skipped": 4
+  },
+  "collection_blocked_missing_rclpy": [
+    "tests/unit/test_act_gazebo_multi_episode.py",
+    "tests/unit/test_act_gazebo_multi_episode_duration.py",
+    "tests/unit/test_act_ppo_all_stage_entry.py",
+    "tests/unit/test_act_ppo_assisted_grasp_contract.py",
+    "tests/unit/test_act_ppo_checkpoint_interval.py",
+    "tests/unit/test_act_ppo_cli_config.py",
+    "tests/unit/test_act_ppo_discard_logging.py",
+    "tests/unit/test_act_ppo_entry_regressions.py",
+    "tests/unit/test_act_ppo_episode_world_restart.py",
+    "tests/unit/test_act_ppo_exploration_profile.py",
+    "tests/unit/test_act_ppo_gazebo.py",
+    "tests/unit/test_act_ppo_kl_cli.py",
+    "tests/unit/test_act_ppo_learning_integration.py",
+    "tests/unit/test_act_ppo_minibatch_size.py",
+    "tests/unit/test_act_ppo_multiworld_deferred_restart.py",
+    "tests/unit/test_act_ppo_multiworld_gazebo.py",
+    "tests/unit/test_act_ppo_near_target_taper.py",
+    "tests/unit/test_act_ppo_raw_bounds_cli.py",
+    "tests/unit/test_act_ppo_s1_near_exploration.py",
+    "tests/unit/test_act_ppo_stage_cli.py",
+    "tests/unit/test_act_ppo_stage_collection.py",
+    "tests/unit/test_act_ppo_stage_core.py",
+    "tests/unit/test_act_ppo_stage_success_skip_cli.py",
+    "tests/unit/test_act_ppo_stage_success_skip_integration.py",
+    "tests/unit/test_act_ppo_stage_wave_integration.py",
+    "tests/unit/test_act_ppo_temporal_entry.py",
+    "tests/unit/test_act_ppo_tensorboard.py",
+    "tests/unit/test_act_ppo_weighted_stage_integration.py",
+    "tests/unit/test_policy_multi_episode_runner.py",
+    "tests/unit/test_s0_relaxed_success_integration.py",
+    "tests/unit/test_s1_lift_approach_integration.py",
+    "tests/unit/test_stage_process_integration.py",
+    "tests/unit/test_stage_process_progress_integration.py"
+  ],
+  "linux_shell_not_run": [
+    "tests/unit/test_act_ppo_s0_s5_launcher.py"
+  ],
+  "failure_groups": {
+    "tests/unit/test_act_evaluation_assisted_grasp.py": {
+      "count": 19,
+      "examples": [
+        {
+          "test": "test_execute_binds_physics_and_restores_environment_on_success_or_failure[False-None-paired-False]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        },
+        {
+          "test": "test_execute_binds_physics_and_restores_environment_on_success_or_failure[False-None-paired-True]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_paired_evaluation.py": {
+      "count": 6,
+      "examples": [
+        {
+          "test": "test_execute_requires_matching_world_cleanup_ack_before_counting_episode[None]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        },
+        {
+          "test": "test_execute_requires_matching_world_cleanup_ack_before_counting_episode[stop_response1]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_ppo_discard_stats.py": {
+      "count": 47,
+      "examples": [
+        {
+          "test": "test_initial_summary_is_saved_beside_training_outputs_with_zero_counts",
+          "error": "OSError: [Errno 9] Bad file descriptor"
+        },
+        {
+          "test": "test_failed_episode_counts_separate_crashes_buffered_and_unconfirmed_steps",
+          "error": "OSError: [Errno 9] Bad file descriptor"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_ppo_episode_records.py": {
+      "count": 3,
+      "examples": [
+        {
+          "test": "test_complete_episode_persists_all_nonimage_transitions",
+          "error": "AttributeError: module 'os' has no attribute 'O_DIRECTORY'"
+        },
+        {
+          "test": "test_file_or_directory_sync_failure_cannot_report_success[2]",
+          "error": "AttributeError: module 'os' has no attribute 'O_DIRECTORY'"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_ppo_gazebo_crash.py": {
+      "count": 1,
+      "examples": [
+        {
+          "test": "test_ready_refreshes_launch_offset_and_planned_restart_excludes_old_log",
+          "error": "AssertionError: assert 35 == 34\n +  where 35 = <so101_capstone.training.act_ppo_multiworld_worker.GazeboWorkerClient object at 0x0000027DE3AD1EB0>.launch_log_offset\n +  and   34 = len(b'[ign gazebo-1] Segmentation fault\\n')\n +    where b'[ign gazebo-1] Segmentation fault\\n' = <built-in method encode of str object at 0x0000027DE1C44210>()\n +      where <built-in method encode of str object at 0x0000027DE1C44210> = '[ign gazebo-1] Segmentation fault\\n'.encode"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_ppo_resume_contract.py": {
+      "count": 1,
+      "examples": [
+        {
+          "test": "test_namespace_features_enum_and_path_are_plain_detached_json",
+          "error": "AssertionError: assert 'asset\\\\calibration.json' == 'asset/calibration.json'\n  \n  - asset/calibration.json\n  ?      ^\n  + asset\\calibration.json\n  ?      ^"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_ppo_stage_schedule_cli.py": {
+      "count": 7,
+      "examples": [
+        {
+          "test": "test_stage_schedule_defaults_and_empty_values[overrides0]",
+          "error": "UnicodeDecodeError: 'gbk' codec can't decode byte 0x80 in position 179: illegal multibyte sequence"
+        },
+        {
+          "test": "test_stage_schedule_defaults_and_empty_values[overrides1]",
+          "error": "UnicodeDecodeError: 'gbk' codec can't decode byte 0x80 in position 179: illegal multibyte sequence"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_act_stage_evaluation_plan.py": {
+      "count": 1,
+      "examples": [
+        {
+          "test": "test_shell_wrapper_passes_options_and_environment_without_running_real_python",
+          "error": "FileNotFoundError: [WinError 2] 系统找不到指定的文件。"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_pick_place_env_core.py": {
+      "count": 3,
+      "examples": [
+        {
+          "test": "test_reward_history_context_reaches_ppo_after_reset_and_step[3-0]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        },
+        {
+          "test": "test_reward_history_context_reaches_ppo_after_reset_and_step[4-0]",
+          "error": "ModuleNotFoundError: No module named 'rclpy'"
+        }
+      ],
+      "test_unchanged_from_source": true
+    },
+    "tests/unit/test_policy_episode_npz.py": {
+      "count": 1,
+      "examples": [
+        {
+          "test": "test_writer_excludes_images_and_loads_without_pickle",
+          "error": "AssertionError: assert {'checkpoint'...ce': 'cuda:0'} == {'checkpoint'...ce': 'cuda:0'}\n  \n  Omitting 1 identical items, use -vv to show\n  Differing items:\n  {'checkpoint': '\\\\models\\\\act'} != {'checkpoint': '/models/act'}\n  Use -v to get more diff"
+        }
+      ],
+      "test_unchanged_from_source": true
+    }
+  },
+  "ros_gazebo_hardware_executed": false
+}

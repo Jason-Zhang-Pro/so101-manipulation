@@ -1,0 +1,7 @@
+*.py text eol=lf
+*.sh text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+# Diff context contains intentional single-space lines; preserve source patches.
+*.patch -whitespace

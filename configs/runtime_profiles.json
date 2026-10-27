@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "policy_contract": {
+    "state_shape": [6],
+    "action_shape": [6],
+    "joint_order": ["shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll", "gripper"],
+    "images": ["observation.images.fixed", "observation.images.handeye"],
+    "image_shape": [3, 480, 640],
+    "arm_policy_range": [-100, 100],
+    "gripper_policy_range": [0, 100],
+    "controller_unit": "radian",
+    "action_semantics": "absolute_joint_position"
+  },
+  "profiles": {
+    "primary": {
+      "ros_workspace": "ros",
+      "controller": "forward_position_controller",
+      "controller_hz": 200,
+      "controller_config": "simulation/config/controllers.yaml",
+      "policy_hz": 15,
+      "calibration_source": "learning/act/run_lerobot_policy_gazebo.py",
+      "workflow_config": "configs/act_workflow.json",
+      "commands": {
+        "collect": ["{python}", "learning/act/workflow.py", "collect"],
+        "train": ["{python}", "learning/act/workflow.py", "train"],
+        "resume": ["{python}", "learning/act/workflow.py", "resume"],
+        "deploy": ["{python}", "learning/act/workflow.py", "deploy"],
+        "sim-act": ["{python}", "learning/act/run_lerobot_policy_gazebo.py", "--fps", "15", "--command-topic", "/forward_position_controller/commands"]
+      }
+    },
+    "capstone_ppo": {
+      "ros_workspace": "ros2_ws",
+      "controller": "position_controller",
+      "controller_hz": 100,
+      "controller_config": "ros2_ws/src/so101_gazebo/config/controllers.yaml",
+      "policy_hz": 30,
+      "calibration_source": "src/so101_capstone/policies/calibration/so101_simulation.json",
+      "stage_config": "config/act_ppo_stages_s0_s5.json",
+      "assisted_grasp": true,
+      "commands": {
+        "ppo-train": ["bash", "scripts/finetune_act_ppo_s0_s5.sh"],
+        "evaluate": ["bash", "scripts/evaluate_act_stages.sh"]
+      }
+    }
+  }
+}

@@ -170,6 +170,12 @@ def main(argv=None):
     else:
         if not args.trial_file: raise ValueError("--trial-file required")
         print(json.dumps(summarize_trials(args.trial_file.expanduser().resolve()),indent=2));return
+    # Use this interpreter and the single vendored framework, not an unrelated CLI on PATH.
+    env["PYTHONPATH"] = os.pathsep.join([str(ROOT/"src"), str(ROOT/"lerobot/src"), env.get("PYTHONPATH", "")])
+    for command in commands:
+        if command[0] in {"lerobot-train", "lerobot-record"}:
+            module = "lerobot.scripts.train" if command[0] == "lerobot-train" else "lerobot.record"
+            command[:1] = [sys.executable, "-m", module]
     for command in commands: print(shlex.join(command),flush=True)
     if "LEROBOT_TENSORBOARD_DIR" in env: print(f"TensorBoard: {tb}",flush=True)
     if not args.execute: print("Preview only. Add --execute to run.");return

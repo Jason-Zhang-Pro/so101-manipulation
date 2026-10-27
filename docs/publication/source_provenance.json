@@ -1,0 +1,27 @@
+{
+  "exported_at_utc": "2026-10-20T14:34:45.283373+00:00",
+  "main_head": "c63540392a6d3de1ec059ffe4e5b59b24ef740b4",
+  "main_branch": "main",
+  "main_tags": [
+    "baseline-before-environment-randomization",
+    "environment-randomization-v1",
+    "reward-better-update-000105",
+    "reward-s1-lift-before-reach-progress"
+  ],
+  "lerobot_head": "feaea6a02218846e36fe034c2fabab82aa52eabb",
+  "lerobot_upstream_base": "882c80d446a63a44868c67ae535467af32ce0e80",
+  "lerobot_upstream": "https://github.com/huggingface/lerobot",
+  "lerobot_source_mode": "vendored current worktree; nested .git excluded",
+  "lerobot_changed_from_base": [
+    "src/lerobot/cameras/utils.py",
+    "src/lerobot/configs/policies.py",
+    "src/lerobot/motors/motors_bus.py",
+    "src/lerobot/policies/act/configuration_act.py",
+    "src/lerobot/policies/act/modeling_act.py",
+    "src/lerobot/scripts/train.py",
+    "src/lerobot/utils/logging_utils.py",
+    "src/lerobot/policies/act/bounded_actions.py"
+  ],
+  "data_and_training_outputs_included": false,
+  "source_project_modified": false
+}

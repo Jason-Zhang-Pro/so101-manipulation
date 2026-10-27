@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/7715cc284bb430fe6dab4ffd/w/4fd0791b683777b02f8d975a/e/826c553ede3b7592eb9ca800 -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="so101_new_calib">
+  <xacro:arg name="controllers_file" default=""/>
+
+  <!-- Materials -->
+
+  <!-- Matte off-white PLA used for all 3D-printed robot parts -->
+  <material name="3d_printed">
+    <color rgba="0.88 0.88 0.85 1.0"/>
+  </material>
+
+  <!-- Black plastic housing used for STS3215 servos -->
+  <material name="sts3215">
+    <color rgba="0.03 0.03 0.03 1.0"/>
+  </material>
+  <material name="camera_black_plastic">
+    <color rgba="0.03 0.03 0.03 1.0"/>
+  </material>
+
+  <link name="world"/>
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Link base -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0137179 -5.19711e-05 0.0334843" rpy="0 0 0"/>
+      <mass value="0.147"/>
+      <inertia ixx="0.000114686" ixy="-4.59787e-07" ixz="4.97151e-06" iyy="0.000136117" iyz="9.75275e-08" izz="0.000130364"/>
+    </inertial>
+    <!-- Part base_motor_holder_so101_v1 -->
+    <visual>
+      <origin xyz="-0.00636471 -9.94414e-05 -0.0024" rpy="1.5708 -1.67685e-15 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/base_motor_holder_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00636471 -9.94414e-05 -0.0024" rpy="1.5708 -1.67685e-15 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/base_motor_holder_so101_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part base_so101_v2 -->
+    <visual>
+      <origin xyz="-0.00636471 -8.97657e-09 -0.0024" rpy="1.5708 -2.78073e-29 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/base_so101_v2.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00636471 -8.97657e-09 -0.0024" rpy="1.5708 -2.78073e-29 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/base_so101_v2__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part sts3215_03a_v1 -->
+    <visual>
+      <origin xyz="0.0263353 -8.97657e-09 0.0437" rpy="-8.21148e-16 7.84513e-18 1.249e-15"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0263353 -8.97657e-09 0.0437" rpy="-8.21148e-16 7.84513e-18 1.249e-15"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part waveshare_mounting_plate_so101_v2 -->
+    <visual>
+      <origin xyz="-0.0309827 -0.000199441 0.0474" rpy="1.5708 -1.35493e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/waveshare_mounting_plate_so101_v2.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0309827 -0.000199441 0.0474" rpy="1.5708 -1.35493e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/waveshare_mounting_plate_so101_v2__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Top camera link (overhead fixed camera) -->
+  <link name="top_camera_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="6.67e-07" ixy="0" ixz="0" iyy="6.67e-07" iyz="0" izz="6.67e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="camera_black_plastic"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link shoulder -->
+  <link name="shoulder_link">
+    <inertial>
+      <origin xyz="-0.0307604 -1.66727e-05 -0.0252713" rpy="0 0 0"/>
+      <mass value="0.100006"/>
+      <inertia ixx="8.3759e-05" ixy="7.55525e-08" ixz="-1.16342e-06" iyy="8.10403e-05" iyz="1.54663e-07" izz="2.39783e-05"/>
+    </inertial>
+    <!-- Part sts3215_03a_v1_2 -->
+    <visual>
+      <origin xyz="-0.0303992 0.000422241 -0.0417" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0303992 0.000422241 -0.0417" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part motor_holder_so101_base_v1 -->
+    <visual>
+      <origin xyz="-0.0675992 -0.000177759 0.0158499" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/motor_holder_so101_base_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0675992 -0.000177759 0.0158499" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/motor_holder_so101_base_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part rotation_pitch_so101_v1 -->
+    <visual>
+      <origin xyz="0.0122008 2.22413e-05 0.0464" rpy="-1.5708 2.35221e-33 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/rotation_pitch_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0122008 2.22413e-05 0.0464" rpy="-1.5708 2.35221e-33 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/rotation_pitch_so101_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link upper_arm -->
+  <link name="upper_arm_link">
+    <inertial>
+      <origin xyz="-0.0898471 -0.00838224 0.0184089" rpy="0 0 0"/>
+      <mass value="0.103"/>
+      <inertia ixx="4.08002e-05" ixy="-1.97819e-05" ixz="-4.03016e-08" iyy="0.000147318" iyz="8.97326e-09" izz="0.000142487"/>
+    </inertial>
+    <!-- Part sts3215_03a_v1_3 -->
+    <visual>
+      <origin xyz="-0.11257 -0.0155 0.0187" rpy="-3.14159 -5.27356e-16 -1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.11257 -0.0155 0.0187" rpy="-3.14159 -5.27356e-16 -1.5708"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part upper_arm_so101_v1 -->
+    <visual>
+      <origin xyz="-0.065085 0.012 0.0182" rpy="3.14159 -0 -1.30911e-30"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/upper_arm_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.065085 0.012 0.0182" rpy="3.14159 -0 -1.30911e-30"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/upper_arm_so101_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link lower_arm -->
+  <link name="lower_arm_link">
+    <inertial>
+      <origin xyz="-0.0980701 0.00324376 0.0182831" rpy="0 0 0"/>
+      <mass value="0.104"/>
+      <inertia ixx="2.87438e-05" ixy="7.41152e-06" ixz="1.26409e-06" iyy="0.000159844" iyz="-4.90188e-08" izz="0.00014529"/>
+    </inertial>
+    <!-- Part under_arm_so101_v1 -->
+    <visual>
+      <origin xyz="-0.0648499 -0.032 0.0182" rpy="3.14159 -0 6.67202e-31"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/under_arm_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0648499 -0.032 0.0182" rpy="3.14159 -0 6.67202e-31"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/under_arm_so101_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part motor_holder_so101_wrist_v1 -->
+    <visual>
+      <origin xyz="-0.0648499 -0.032 0.018" rpy="-3.14159 -2.55351e-15 -1.83387e-30"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/motor_holder_so101_wrist_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0648499 -0.032 0.018" rpy="-3.14159 -2.55351e-15 -1.83387e-30"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/motor_holder_so101_wrist_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part sts3215_03a_v1_4 -->
+    <visual>
+      <origin xyz="-0.1224 0.0052 0.0187" rpy="-3.14159 -7.88861e-31 -3.14159"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.1224 0.0052 0.0187" rpy="-3.14159 -7.88861e-31 -3.14159"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link wrist -->
+  <link name="wrist_link">
+    <inertial>
+      <origin xyz="-0.000103312 -0.0386143 0.0281156" rpy="0 0 0"/>
+      <mass value="0.079"/>
+      <inertia ixx="3.68263e-05" ixy="1.7893e-08" ixz="-5.28128e-08" iyy="2.5391e-05" iyz="3.6412e-06" izz="2.1e-05"/>
+    </inertial>
+    <!-- Part sts3215_03a_no_horn_v1 -->
+    <visual>
+      <origin xyz="8.32667e-17 -0.0424 0.0306" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_no_horn_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="8.32667e-17 -0.0424 0.0306" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_no_horn_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wrist_roll_pitch_so101_v2 -->
+    <visual>
+      <origin xyz="0 -0.028 0.0181" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/wrist_roll_pitch_so101_v2.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.028 0.0181" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/wrist_roll_pitch_so101_v2__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link gripper -->
+  <link name="gripper_link">
+    <inertial>
+      <origin xyz="0.000213627 0.000245138 -0.025187" rpy="0 0 0"/>
+      <mass value="0.087"/>
+      <inertia ixx="2.75087e-05" ixy="-3.35241e-07" ixz="-5.7352e-06" iyy="4.33657e-05" iyz="-5.17847e-08" izz="3.45059e-05"/>
+    </inertial>
+    <!-- Part sts3215_03a_v1_5 -->
+    <visual>
+      <origin xyz="0.0077 0.0001 -0.0234" rpy="-1.5708 -5.19179e-17 -1.66533e-16"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/sts3215_03a_v1.stl"/>
+      </geometry>
+      <material name="sts3215">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0077 0.0001 -0.0234" rpy="-1.5708 -5.19179e-17 -1.66533e-16"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/sts3215_03a_v1__ultralow_1hull__part_00.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wrist_roll_follower_so101_v1 -->
+    <visual>
+      <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/wrist_roll_follower_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision name="generated_wrist_roll_follower_so101_v1_part_00">
+      <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/wrist_roll_follower_so101_v1__functional_body__part_00.stl"/>
+      </geometry>
+    </collision>
+    <collision name="generated_wrist_roll_follower_so101_v1_part_01">
+      <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/wrist_roll_follower_so101_v1__functional_finger__part_01.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Gripper frame (dummy link + fixed joint) -->
+  <link name="gripper_frame_link">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Physical mounting bracket for the gripper camera.
+       The camera sensor remains on gripper_camera_link for now. -->
+  <link name="gripper_camera_mount_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia
+        ixx="1e-6" ixy="0" ixz="0"
+        iyy="1e-6" iyz="0"
+        izz="1e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://so101_description/meshes/gripper_camera_mount.stl"
+          scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+
+    <collision name="gripper_camera_mount_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://so101_description/meshes/gripper_camera_mount.stl"
+          scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Temporary initial pose.
+       Adjust this joint to align the bracket with the physical gripper body. -->
+  <joint name="gripper_camera_mount_joint" type="fixed">
+    <origin xyz="0.1211 0.023897 -0.12016"
+            rpy="-1.570796 3.141593 0"/>
+    <parent link="gripper_link"/>
+    <child link="gripper_camera_mount_link"/>
+  </joint>
+
+
+  <link name="gripper_camera_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.02"/>
+      <inertia
+        ixx="1e-5" ixy="0" ixz="0"
+        iyy="1e-5" iyz="0"
+        izz="1e-5"/>
+    </inertial>
+
+    <!-- Camera body: 27 mm x 30 mm x 2 mm.
+         Link origin is at the centre of the body/lens interface. -->
+    <visual name="camera_body_visual">
+      <origin xyz="0 0 -0.001" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.024 0.024 0.002"/>
+      </geometry>
+      <material name="camera_body_material">
+        <color rgba="0.03 0.03 0.03 1.0"/>
+      </material>
+    </visual>
+
+    <!-- Cylindrical camera section: radius 8 mm, length 28 mm.
+         Extends from the sensor origin along +Z. -->
+    <visual name="camera_lens_visual">
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.008" length="0.028"/>
+      </geometry>
+      <material name="camera_lens_material">
+        <color rgba="0.01 0.01 0.01 1.0"/>
+      </material>
+    </visual>
+
+    <collision name="camera_body_collision">
+      <origin xyz="0 0 -0.001" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.024 0.024 0.002"/>
+      </geometry>
+    </collision>
+
+    <collision name="camera_lens_collision">
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.008" length="0.028"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+
+  <joint name="gripper_frame_joint" type="fixed">
+    <origin xyz="-0.0079 -0.000218121 -0.0981274" rpy="0 3.14159 0"/>
+    <parent link="gripper_link"/>
+    <child link="gripper_frame_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <joint name="gripper_camera_joint" type="fixed">
+    <!-- xyz: camera mount position relative to end-effector frame (gripper_frame_link) -->
+    <!-- rpy: camera orientation relative to end-effector frame (gripper_frame_link) -->
+    <origin xyz="-0.0103 0.07322 -0.104" rpy="0.436332 0 0"/>
+    <parent link="gripper_frame_link"/>
+    <child link="gripper_camera_link"/>
+  </joint>
+
+  <!-- Link moving_jaw_so101_v1 -->
+  <link name="moving_jaw_so101_v1_link">
+    <inertial>
+      <origin xyz="-0.00157495 -0.0300244 0.0192755" rpy="0 0 0"/>
+      <mass value="0.012"/>
+      <inertia ixx="6.61427e-06" ixy="-3.19807e-07" ixz="-5.90717e-09" iyy="1.89032e-06" iyz="-1.09945e-07" izz="5.28738e-06"/>
+    </inertial>
+    <!-- Part moving_jaw_so101_v1 -->
+    <visual>
+      <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/moving_jaw_so101_v1.stl"/>
+      </geometry>
+      <material name="3d_printed">
+        <color rgba="0.88 0.88 0.85 1.0"/>
+      </material>
+    </visual>
+    <collision name="generated_moving_jaw_so101_v1_part_00">
+      <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/moving_jaw_so101_v1__functional_body__part_00.stl"/>
+      </geometry>
+    </collision>
+    <collision name="generated_moving_jaw_so101_v1_part_01">
+      <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/collision_generated_ultralow/moving_jaw_so101_v1__functional_finger__part_01.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint from gripper to moving_jaw_so101_v1 -->
+  <joint name="gripper" type="revolute">
+    <origin xyz="0.0202 0.0188 -0.0234" rpy="1.5708 -5.24284e-08 -1.41553e-15"/>
+    <parent link="gripper_link"/>
+    <child link="moving_jaw_so101_v1_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.174533" upper="1.74533"/>
+  </joint>
+
+  <!-- Joint from wrist to gripper -->
+  <joint name="wrist_roll" type="revolute">
+    <origin xyz="5.55112e-17 -0.0611 0.0181" rpy="1.5708 0.0486795 3.14159"/>
+    <parent link="wrist_link"/>
+    <child link="gripper_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-2.74385" upper="2.84121"/>
+  </joint>
+
+  <!-- Joint from lower_arm to wrist -->
+  <joint name="wrist_flex" type="revolute">
+    <origin xyz="-0.1349 0.0052 3.62355e-17" rpy="4.02456e-15 8.67362e-16 -1.5708"/>
+    <parent link="lower_arm_link"/>
+    <child link="wrist_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.65806" upper="1.65806"/>
+  </joint>
+
+  <!-- Joint from upper_arm to lower_arm -->
+  <!-- Note: 5-degree calibration offset applied to joint limits -->
+  <joint name="elbow_flex" type="revolute">
+    <origin xyz="-0.11257 -0.028 1.73763e-16" rpy="-3.63608e-16 8.74301e-16 1.5708"/>
+    <parent link="upper_arm_link"/>
+    <child link="lower_arm_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.69" upper="1.69"/>
+  </joint>
+
+  <!-- Joint from shoulder to upper_arm -->
+  <joint name="shoulder_lift" type="revolute">
+    <origin xyz="-0.0303992 -0.0182778 -0.0542" rpy="-1.5708 -1.5708 0"/>
+    <parent link="shoulder_link"/>
+    <child link="upper_arm_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.74533" upper="1.74533"/>
+  </joint>
+
+  <!-- Joint from base to shoulder -->
+  <joint name="shoulder_pan" type="revolute">
+    <origin xyz="0.0388353 -8.97657e-09 0.0624" rpy="3.14159 4.18253e-17 -3.14159"/>
+    <parent link="base_link"/>
+    <child link="shoulder_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.91986" upper="1.91986"/>
+  </joint>
+
+  <joint name="top_camera_joint" type="fixed">
+    <origin xyz="0.528 0.000 0.3976" rpy="0 1.954769 0"/>
+    <parent link="base_link"/>
+    <child link="top_camera_link"/>
+  </joint>
+
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <joint name="shoulder_pan">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="shoulder_lift">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="elbow_flex">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_flex">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_roll">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="gripper">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+
+  <!-- Contact evidence for task scoring only. Monitor the functional finger
+       collision, not the wrist/body. Collision names must also be verified in
+       the generated SDF before enabling formal grasp scoring in Gazebo. -->
+  <gazebo reference="gripper_link">
+    <sensor name="fixed_finger_contact" type="contact">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <contact>
+        <topic>/so101/contacts/raw/fixed_finger</topic>
+        <collision>gripper_link_fixed_joint_lump__generated_wrist_roll_follower_so101_v1_part_01_collision_2</collision>
+      </contact>
+    </sensor>
+  </gazebo>
+  <gazebo reference="moving_jaw_so101_v1_link">
+    <sensor name="moving_finger_contact" type="contact">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <contact>
+        <topic>/so101/contacts/raw/moving_finger</topic>
+        <collision>moving_jaw_so101_v1_link_fixed_joint_lump__generated_moving_jaw_so101_v1_part_01_collision_1</collision>
+      </contact>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(arg controllers_file)</parameters>
+    </plugin>
+    <!-- Semantic segmentation label for whole robot model -->
+    <plugin filename="ignition-gazebo-label-system" name="ignition::gazebo::systems::Label">
+      <label>10</label>
+    </plugin>
+  </gazebo>
+
+    <!-- ========================================================= -->
+  <!-- Top / fixed camera                                        -->
+  <!-- Raw pinhole horizontal FOV: 100 deg = 1.745329 rad -->
+  <!-- Resolution: 800 x 600 -->
+  <!-- Raw sensor rate: 45 Hz; policy sampling rate: 30 Hz -->
+  <!-- ========================================================= -->
+  <gazebo reference="top_camera_link">
+    <sensor name="top_camera_sensor" type="camera">
+      <always_on>true</always_on>
+      <update_rate>45</update_rate>
+      <topic>/top_camera/image_raw</topic>
+
+      <camera>
+        <camera_info_topic>/top_camera/camera_info</camera_info_topic>
+
+        <!-- Temporary effective pinhole FOV inferred from the 0.60 m table span -->
+        <horizontal_fov>1.745329</horizontal_fov>
+
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.01</near>
+          <far>10.0</far>
+        </clip>
+      </camera>
+    </sensor>
+
+    <sensor name="top_camera_segmentation_sensor" type="segmentation">
+      <always_on>false</always_on>
+      <update_rate>60</update_rate>
+      <topic>/top_camera/segmentation</topic>
+
+      <camera>
+        <segmentation_type>semantic</segmentation_type>
+        <camera_info_topic>/top_camera/segmentation/camera_info</camera_info_topic>
+
+        <!-- Keep segmentation geometry identical to the RGB camera -->
+        <horizontal_fov>1.745329</horizontal_fov>
+
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.01</near>
+          <far>10.0</far>
+        </clip>
+      </camera>
+    </sensor>
+  </gazebo>
+
+  <!-- ========================================================= -->
+  <!-- Gripper camera                                            -->
+  <!-- Assumed horizontal FOV: 50 deg = 0.872665 rad             -->
+  <!-- Resolution: 640 x 480                                     -->
+  <!-- Frame rate: 30 Hz, initial simulation test value           -->
+  <!-- ========================================================= -->
+  <gazebo reference="gripper_camera_link">
+    <sensor name="gripper_camera_sensor" type="camera">
+
+      <!-- Preserve the currently verified sensor position/orientation -->
+      <pose>0.007 -0.0015 0.0001 0 -1.570796 -1.570796</pose>
+
+      <always_on>true</always_on>
+      <update_rate>45</update_rate>
+      <topic>/gripper_camera/image_raw</topic>
+
+      <camera>
+        <camera_info_topic>/gripper_camera/camera_info</camera_info_topic>
+
+        <!-- Temporarily treat the advertised 50 deg FOV as horizontal -->
+        <horizontal_fov>0.872665</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.01</near>
+          <far>10.0</far>
+        </clip>
+      </camera>
+    </sensor>
+
+    <sensor name="gripper_camera_segmentation_sensor" type="segmentation">
+
+      <!-- Must match the RGB sensor pose exactly -->
+      <pose>0.007 -0.0015 0.0001 0 -1.570796 -1.570796</pose>
+
+      <always_on>false</always_on>
+      <update_rate>30</update_rate>
+      <topic>/gripper_camera/segmentation</topic>
+
+      <camera>
+        <segmentation_type>semantic</segmentation_type>
+        <camera_info_topic>/gripper_camera/segmentation/camera_info</camera_info_topic>
+
+        <!-- Keep segmentation geometry identical to the RGB camera -->
+        <horizontal_fov>0.872665</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.01</near>
+          <far>10.0</far>
+        </clip>
+      </camera>
+    </sensor>
+  </gazebo>
+
+</robot>

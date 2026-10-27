@@ -1,0 +1,33 @@
+target_cube_manager:
+  ros__parameters:
+
+    # Gazebo world
+    world_name: empty
+    dynamic_pose_topic: /world/empty/dynamic_pose/info
+
+    # Model instance naming
+    model_name_prefix: target_cube_
+    name_digits: 4
+
+    # Cube geometry and spawn height
+    cube_size: 0.030
+    table_surface_z: 0.750
+    spawn_clearance: 0.003
+
+    # Front half-annulus centred on the robot base at world (0, 0)
+    spawn_center_x: 0.0
+    spawn_center_y: 0.0
+    spawn_inner_radius: 0.20
+    spawn_outer_radius: 0.35
+    spawn_angle_min: -0.785398163397
+    spawn_angle_max: 0.785398163397
+
+    # Separation between simultaneously existing cubes
+    minimum_center_distance: 0.050
+    maximum_spawn_attempts: 100
+
+    # Maximum managed cube count
+    maximum_cube_count: 20
+
+    # ROS state publication frequency
+    state_publish_rate: 30.0

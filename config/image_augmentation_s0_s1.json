@@ -1,0 +1,404 @@
+{
+  "scene": {
+    "background_color": {
+      "enabled": false,
+      "rgb_delta": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    "ground_color": {
+      "enabled": false,
+      "rgb_delta": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    "table_color": {
+      "enabled": false,
+      "rgb_delta": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    "target_color": {
+      "enabled": false,
+      "rgb_delta": [
+        0.12,
+        0.04,
+        0.04
+      ]
+    }
+  },
+  "lights": {
+    "fill_light_front_left": {
+      "intensity": {
+        "enabled": false,
+        "scale_range": [
+          0.75,
+          1.25
+        ]
+      },
+      "color": {
+        "enabled": false,
+        "rgb_gain_amplitude": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "position": {
+        "enabled": false,
+        "xyz_amplitude_m": [
+          0.05,
+          0.05,
+          0.08
+        ]
+      },
+      "shadows": {
+        "enabled": false,
+        "probability_on": 0.35
+      }
+    },
+    "fill_light_front_right": {
+      "intensity": {
+        "enabled": false,
+        "scale_range": [
+          0.75,
+          1.25
+        ]
+      },
+      "color": {
+        "enabled": false,
+        "rgb_gain_amplitude": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "position": {
+        "enabled": false,
+        "xyz_amplitude_m": [
+          0.05,
+          0.05,
+          0.08
+        ]
+      },
+      "shadows": {
+        "enabled": false,
+        "probability_on": 0.35
+      }
+    },
+    "fill_light_back_left": {
+      "intensity": {
+        "enabled": false,
+        "scale_range": [
+          0.75,
+          1.25
+        ]
+      },
+      "color": {
+        "enabled": false,
+        "rgb_gain_amplitude": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "position": {
+        "enabled": false,
+        "xyz_amplitude_m": [
+          0.05,
+          0.05,
+          0.08
+        ]
+      },
+      "shadows": {
+        "enabled": false,
+        "probability_on": 0.35
+      }
+    },
+    "fill_light_back_right": {
+      "intensity": {
+        "enabled": false,
+        "scale_range": [
+          0.75,
+          1.25
+        ]
+      },
+      "color": {
+        "enabled": false,
+        "rgb_gain_amplitude": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "position": {
+        "enabled": false,
+        "xyz_amplitude_m": [
+          0.05,
+          0.05,
+          0.08
+        ]
+      },
+      "shadows": {
+        "enabled": false,
+        "probability_on": 0.35
+      }
+    }
+  },
+  "top_camera": {
+    "pose": {
+      "enabled": false,
+      "position_amplitude_m": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "rotation_amplitude_deg": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "image": {
+      "brightness": {
+        "enabled": true,
+        "gain_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "contrast": {
+        "enabled": true,
+        "gain_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "gamma": {
+        "enabled": true,
+        "gamma_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "saturation": {
+        "enabled": true,
+        "gain_range": [
+          0.85,
+          1.15
+        ]
+      },
+      "white_balance_rgb_gain": {
+        "enabled": true,
+        "channel_gain_ranges": [
+          [
+            0.95,
+            1.05
+          ],
+          [
+            0.95,
+            1.05
+          ],
+          [
+            0.95,
+            1.05
+          ]
+        ]
+      },
+      "rgb_noise": {
+        "enabled": true,
+        "std_8bit_range": [
+          0.0,
+          2.0
+        ]
+      },
+      "blur": {
+        "enabled": true,
+        "sigma_px_range": [
+          0.0,
+          0.8
+        ]
+      },
+      "translation": {
+        "enabled": true,
+        "x_amplitude_px": 3.0,
+        "y_amplitude_px": 3.0
+      },
+      "distortion": {
+        "enabled": true,
+        "delta_k1_range": [
+          -0.01,
+          0.01
+        ],
+        "delta_k2_range": [
+          -0.005,
+          0.005
+        ]
+      },
+      "crop": {
+        "enabled": true,
+        "scale_range": [
+          0.97,
+          1.0
+        ],
+        "center_x_amplitude_px": 3.0,
+        "center_y_amplitude_px": 3.0
+      }
+    }
+  },
+  "gripper_camera": {
+    "pose": {
+      "enabled": false,
+      "position_amplitude_m": [
+        0.002,
+        0.002,
+        0.002
+      ],
+      "rotation_amplitude_deg": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "image": {
+      "brightness": {
+        "enabled": true,
+        "gain_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "contrast": {
+        "enabled": true,
+        "gain_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "gamma": {
+        "enabled": true,
+        "gamma_range": [
+          0.9,
+          1.1
+        ]
+      },
+      "saturation": {
+        "enabled": true,
+        "gain_range": [
+          0.85,
+          1.15
+        ]
+      },
+      "white_balance_rgb_gain": {
+        "enabled": true,
+        "channel_gain_ranges": [
+          [
+            0.95,
+            1.05
+          ],
+          [
+            0.95,
+            1.05
+          ],
+          [
+            0.95,
+            1.05
+          ]
+        ]
+      },
+      "rgb_noise": {
+        "enabled": true,
+        "std_8bit_range": [
+          0.0,
+          2.0
+        ]
+      },
+      "blur": {
+        "enabled": true,
+        "sigma_px_range": [
+          0.0,
+          0.8
+        ]
+      },
+      "translation": {
+        "enabled": true,
+        "x_amplitude_px": 3.0,
+        "y_amplitude_px": 3.0
+      },
+      "distortion": {
+        "enabled": true,
+        "delta_k1_range": [
+          -0.01,
+          0.01
+        ],
+        "delta_k2_range": [
+          -0.005,
+          0.005
+        ]
+      },
+      "crop": {
+        "enabled": true,
+        "scale_range": [
+          0.97,
+          1.0
+        ],
+        "center_x_amplitude_px": 3.0,
+        "center_y_amplitude_px": 3.0
+      }
+    }
+  },
+  "joint_state": {
+    "position_noise": {
+      "enabled": false,
+      "std_deg_range": [
+        0.0,
+        0.2
+      ]
+    },
+    "velocity_noise": {
+      "enabled": false,
+      "std_rad_s_range": [
+        0.0,
+        0.01
+      ]
+    }
+  },
+  "home_initial_pose": {
+    "enabled": false,
+    "toward_zero_max_deg": 1.0
+  },
+  "goal_region": {
+    "position": {
+      "enabled": false,
+      "xy_amplitude_m": [
+        0.005,
+        0.005
+      ]
+    },
+    "color": {
+      "enabled": false,
+      "rgb_delta": [
+        0.08,
+        0.08,
+        0.08
+      ]
+    },
+    "size": {
+      "enabled": false,
+      "half_extent_x_range_m": [
+        0.025,
+        0.035
+      ],
+      "half_extent_y_range_m": [
+        0.025,
+        0.035
+      ]
+    }
+  }
+}

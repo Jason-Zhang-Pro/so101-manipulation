@@ -1,0 +1,26 @@
+{
+  "python": "3.10.18",
+  "scope": "installed version metadata only; not an installation lockfile or a fresh-environment verification",
+  "packages": {
+    "lerobot": "0.3.4",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "torchcodec": "0.5",
+    "numpy": "2.2.6",
+    "tensorboard": "2.21.0",
+    "pytest": "8.4.2",
+    "gymnasium": "0.29.1",
+    "safetensors": "0.8.0",
+    "opencv-python-headless": "5.0.0.93",
+    "datasets": "3.6.0",
+    "draccus": "0.10.0",
+    "av": "17.1.0",
+    "matplotlib": "3.10.9",
+    "feetech-servo-sdk": "1.0.0",
+    "scipy": null,
+    "Pillow": "12.3.0",
+    "transformers": null,
+    "diffusers": "0.39.0",
+    "huggingface-hub": "1.25.1"
+  }
+}

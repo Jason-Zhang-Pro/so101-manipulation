@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "label": "较好",
+  "label_source": "用户指定的阶段性基线标记；不表示已经完成抓取或通过成功率验证。",
+  "marked_at": "2026-10-01T17:31:52.838933+08:00",
+  "git_tag": "reward-better-update-000105",
+  "scope": "当前 S0/S1 reward、分段过程奖励、配套探索与分阶段 advantage 标准化。",
+  "project_root_at_marking": "/media/tiger/New Volume/ubuntufile/capstone",
+  "training_run": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints",
+  "checkpoint_directory": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105",
+  "update_index": 105,
+  "artifact_storage": "模型与训练输出保留在本地 output_simulation；Git 只保存此关联记录及校验值，不包含权重或训练日志。Git checkout 不会恢复已删除的外部模型文件。",
+  "checkpoint_artifacts": [
+    {
+      "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105/pretrained_model/model.safetensors",
+      "size_bytes": 206352904,
+      "sha256": "27c64a2328b7e8c5678de03dd33a473e8630d78eef03bc90de3607a40b4c520f"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105/pretrained_model/config.json",
+      "size_bytes": 1622,
+      "sha256": "e1d22b3fde4fd61272764a589296fc28d89d6e2f86a69060943c5332219068bb"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105/pretrained_model/resolved_reward.json",
+      "size_bytes": 3519,
+      "sha256": "5764d009d74b646cc3dd4790963542790bd36e6fffdb0b5f865c759f5bb0190c"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105/pretrained_model/resolved_stages.json",
+      "size_bytes": 1404,
+      "sha256": "9c0094ea90ed63c5635553ce0e928c8bbf8922f4eeb3be4d942907447593f117"
+    },
+    {
+      "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/checkpoints/update_000105/training_state.pt",
+      "size_bytes": 484126801,
+      "sha256": "1e0059c96ab7934d5948987ee2884b207e2220d3da766f17ee28e3758d1c460b"
+    }
+  ],
+  "source_run_config": {
+    "path": "output_simulation/finetuned/act_ppo_20260930_225042_from_checkpoints/config.json",
+    "size_bytes": 37450,
+    "sha256": "e0b08a01c5fe29962a4e343c0f5846b42063069da74dc546f19562c2d14e774b"
+  },
+  "configuration_checks": {
+    "resolved_reward_matches_checkpoint": true,
+    "resolved_stages_match_checkpoint": true,
+    "resolved_reward_matches_run": true,
+    "resolved_stages_match_run": true,
+    "exploration_signature_matches_run": true,
+    "advantage_group_index_matches_context": true
+  },
+  "reward_configuration": {
+    "path": "config/pick_place_reward.json",
+    "resolved_gamma": 0.997,
+    "config_hash": "7ee92f90cab8779553d4a9c31b84d0430e40c6a25d50f6b7941e2d357a37596a",
+    "schema_version": 5
+  },
+  "stage_configuration": {
+    "path": "config/act_ppo_stages_s1_progress.json",
+    "config_hash": "4db8bd904766556fbe5170f289b3c6634f6d250cd323d677c46df84d6cd7012e",
+    "process_schema_version": 3
+  },
+  "exploration_signature": {
+    "profile": "final_good_act",
+    "schema_version": 2,
+    "action_mean": "unchanged_absolute_act",
+    "sample_distribution": "existing_preclip_gaussian",
+    "distance_bins": {
+      "near_upper_inclusive": 0.08,
+      "middle_upper_inclusive": 0.15,
+      "reach_distance_units": "metres",
+      "home_error_units": "radians_max_joint_error",
+      "initial_joint_std_rad": [
+        0.05,
+        0.08,
+        0.12
+      ]
+    },
+    "s1_near_override": {
+      "training_stage": "S1",
+      "phases": [
+        "APPROACH",
+        "GRASP_LIFT",
+        "PLACE_RELEASE",
+        "TRANSPORT"
+      ],
+      "distance_upper_inclusive_m": 0.08,
+      "initial_joint_std_rad": 0.12
+    },
+    "home": {
+      "phases": [
+        "HOME_HOLD",
+        "RETURN_HOME",
+        "WAIT_HOME"
+      ],
+      "minimum_initial_std_rad": 0.001,
+      "excess_error_gain": 0.5,
+      "rule": "min(distance_bin_std, floor + gain * max(error - tolerance, 0))",
+      "tolerance_source": "active_reward_home_joint_tolerance_rad"
+    },
+    "evidence": {
+      "phase": [
+        "task_phase_name",
+        "task_phase"
+      ],
+      "reach_distance": [
+        "stage_reach_distance_m",
+        "target_distance_m"
+      ],
+      "home_error": [
+        "stage_home_error_rad",
+        "home_error_rad"
+      ],
+      "invalid_measurement": "reject"
+    },
+    "joint_names": [
+      "shoulder_pan",
+      "shoulder_lift",
+      "elbow_flex",
+      "wrist_flex",
+      "wrist_roll",
+      "gripper"
+    ],
+    "normalized_half_span_rad": [
+      1.9155686672338563,
+      1.7447271134023916,
+      1.6883093453316749,
+      1.653769279434707,
+      2.7902927817483745,
+      0.9587442647055251
+    ],
+    "learned_scale": "exp(base_log_std - initial_log_std)",
+    "effective_bounds": "existing_configured_log_std_limits"
+  },
+  "ppo_run_config": {
+    "actor_backbone_learning_rate": 2e-05,
+    "actor_learning_rate": 0.0002,
+    "advantage_group_context_index": 126,
+    "clip_ratio": 0.2,
+    "critic_hidden_dim": 256,
+    "critic_image_height": 96,
+    "critic_image_width": 128,
+    "critic_learning_rate": 0.0002,
+    "critic_max_gradient_norm": 0.5,
+    "critic_policy_context_dim": 9,
+    "critic_task_context_dim": 140,
+    "entropy_coefficient": 0.0,
+    "exploration_learning_rate": 0.0002,
+    "exploration_max_gradient_norm": 0.5,
+    "gae_lambda": 0.95,
+    "gamma": 0.997,
+    "gripper_maximum_log_std": -1.5,
+    "initial_log_std": -3.0,
+    "kl_backoff_factor": 0.5,
+    "kl_backoff_max_retries": 10,
+    "kl_backoff_min_scale": 0.0001,
+    "max_gradient_norm": 0.5,
+    "maximum_log_std": -2.5,
+    "mean_bounds_coefficient": 0.1,
+    "minibatch_size": 30,
+    "minimum_log_std": -9.0,
+    "ppo_epochs": 2,
+    "target_kl": 50.0,
+    "value_loss_coefficient": 0.5
+  },
+  "execution": {
+    "policy_hz": 30.0,
+    "training_stages": "s0_s1",
+    "image_augmentation": true,
+    "environment_randomization": false,
+    "stage_advantage_normalization": "binary_stage_actor_only_v1"
+  },
+  "current_reward_code_and_configuration": [
+    {
+      "path": "config/pick_place_reward.json",
+      "size_bytes": 3273,
+      "sha256": "104422697f291a9010600a969e89f8b1405e1866bc40ff32b0118c5fdac91a65"
+    },
+    {
+      "path": "config/act_ppo_stages_s1_progress.json",
+      "size_bytes": 1148,
+      "sha256": "4ad65412bd39069d195d60a454e4ba87a9bbb0f92ab8b8540aaf925433e045cd"
+    },
+    {
+      "path": "src/so101_capstone/rewards/stage_process_reward.py",
+      "size_bytes": 22533,
+      "sha256": "e985ebaeaedc728c37399067fa965c6f3a0b6467062ae3e4825e3d9ff5d8ef42"
+    },
+    {
+      "path": "src/so101_capstone/rewards/training_stages.py",
+      "size_bytes": 22845,
+      "sha256": "8d3b20f8f89a3d62e763842f837f3654087c6caeecfbf493ba92eee52152937b"
+    },
+    {
+      "path": "src/so101_capstone/environments/reach_env_core.py",
+      "size_bytes": 44071,
+      "sha256": "e46d422920b0e15e66a1e69f0ae09247b0a88cd548a596a268da163a5afe5f56"
+    },
+    {
+      "path": "src/so101_capstone/training/act_ppo.py",
+      "size_bytes": 118192,
+      "sha256": "580da4eed524a16a56671b20e50e1f2a2af1d7e847295bc5d2426e0559a4e277"
+    },
+    {
+      "path": "src/so101_capstone/training/act_ppo_exploration_profile.py",
+      "size_bytes": 8381,
+      "sha256": "a4231d217842c00a765060cb75542af44417435897e9466286c92679b55272d2"
+    },
+    {
+      "path": "src/so101_capstone/training/act_ppo_gazebo.py",
+      "size_bytes": 104453,
+      "sha256": "2e844f771ff6230e59dc4c683ba050422687061a44701dc20cc2378ab99332d7"
+    },
+    {
+      "path": "scripts/finetune_act_ppo_so101.sh",
+      "size_bytes": 37239,
+      "sha256": "77ccb75bd921e98f4002b69fb1672d89ff9b7a29ef30dc688ccf556905b5378d"
+    }
+  ],
+  "evidence_limits": "配置与保存的训练契约已逐项核对；这些校验不证明历史训练时全部源码与本次提交逐字节相同。calibration_status 保持原值，未为标记改变训练配置。",
+  "related_evaluation": {
+    "directory": "output_simulation/evaluation/home_reach_20261001_171642_e05553c6",
+    "summary": {
+      "path": "output_simulation/evaluation/home_reach_20261001_171642_e05553c6/summary.json",
+      "size_bytes": 3402,
+      "sha256": "adc92f0b02c813a4bb146038785a1c3ef38b0885c029f5ff1789432a922bd7be"
+    },
+    "completed_steps": 390,
+    "minimum_distance_m": 0.045564614178854566,
+    "final_distance_m": 0.04562109168370512,
+    "observed_grasp_valid": false,
+    "limitations": "该记录来自控制器就绪修复前的 schema 1 测试，前约1.3秒动作未执行；不能作为公平的3秒回 HOME 成功率评估。修复后的测试单独提交，尚未复测。"
+  }
+}
