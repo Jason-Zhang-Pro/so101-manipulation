@@ -3,6 +3,12 @@
 A low-cost robot manipulation project combining real-robot ACT imitation learning,
 ROS 2 / Gazebo simulation, visual grasping, and reinforcement-learning groundwork.
 
+<p align="center">
+<img src="assets/project-gallery/so101-real-robot.png" alt="SO-101 physical robot with a red target block" width="540">
+</p>
+
+SO-101 hardware used for tabletop block manipulation.
+
 ![Experiment results](assets/experiment_results.png)
 
 **Reported real-robot grasp success:** 85.3% at demonstrated centres and 25.0% at
@@ -49,6 +55,28 @@ See [experiment evidence](docs/experiments.md) for sample-size and provenance no
 
 ![Reported simulation benchmark](assets/simulation_results.png)
 
+## Project Gallery
+
+### Real-robot ACT evaluation
+
+![ACT grasp success at demonstrated workspace centres](assets/project-gallery/act-workspace-success.png)
+
+The 3 × 5 grid records **128 successful grasps in 150 trials (85.3%)**, with ten trials at each demonstrated centre. Shading represents the measured centre results, not continuous coverage of each cell. These are grasp outcomes, not full pick-and-place completion rates.
+
+### Gazebo tabletop environment
+
+![SO-101 and target block in the Gazebo tabletop scene](assets/project-gallery/gazebo-tabletop-scene.png)
+
+The simulation scene includes the robot, tabletop, target block and camera setup for policy playback and simulation experiments. This screenshot illustrates the environment; it does not establish successful policy transfer to hardware.
+
+### Collision geometry optimisation
+
+![Original SO-101 mesh compared with simplified collision geometry](assets/project-gallery/collision-mesh-comparison.png)
+
+The project review reports a reduction from **398,884 to 832 triangles (99.79%)** across the displayed robot mesh instances. Visual meshes remain unchanged. The simplified collision representation supports simulation runtime optimisation; contact fidelity requires separate validation.
+
+These project visuals were extracted from the team's mid-project review. See [image provenance](assets/project-gallery/README.md) for source locations and interpretation notes.
+
 ## Repository Map
 
 | Directory | Purpose |
@@ -61,7 +89,7 @@ See [experiment evidence](docs/experiments.md) for sample-size and provenance no
 | `learning/ppo/` | Existing Gazebo PPO reach environment and train/play scripts |
 | `evaluation/` | Fixed-camera dataset-view utility |
 | `tools/` | Calibration, scene reset and real-to-sim pose tools |
-| `assets/` | Reproducible result and system figures |
+| `assets/` | Result figures, hardware photo and simulation gallery |
 | `docs/` | Setup, evidence, source inventory and release review |
 
 The PPO reach baseline is a separate experiment, not an implementation of ACT
